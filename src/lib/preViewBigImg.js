@@ -8,6 +8,7 @@ $(function(){
 		__proto__: GetPreView.prototype.__proto__,
         init:function(){
             this.loadBase();
+            console.log(this.imgs);
         },
         loadBase:function(){
             var body = $('body');
@@ -30,16 +31,16 @@ $(function(){
         IsClick:function(){
             var that = this;
             this.imgs.on('click',function(){
-                $('.bg-pre-view').show();
+                $('.bg-pre-view').fadeIn();
                 var $imgSrc = $(this).attr('src');
                 $('.pre-view-con img').attr('src',$imgSrc);
-                that.index = $(this).parent('.con-item').index();//有陷阱a
+                that.index = $(this).parents('.con-item').index();//有陷阱a
             })
         },
         closeClick:function(){
             var closeBtn = $('.pre-close-btn');
             closeBtn.on('click',function(){
-                $('.bg-pre-view').hide();
+                $('.bg-pre-view').fadeOut();
             })
         },
         preClick:function(){
