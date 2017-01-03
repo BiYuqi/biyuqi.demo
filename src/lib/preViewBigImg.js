@@ -19,8 +19,8 @@ $(function(){
                             '<div class="pre-close-btn">'+
                                 'X'+
                             '</div>'+
-                            '<div class="pre-btn pre-btn-left"><img src="../img/left-btn.png"></div>'+
-                            '<div class="pre-btn pre-btn-right"><img src="../img/right-btn.png"></div>'+
+                            '<div class="pre-btn pre-btn-left"><img src="http://oj7j5nuxv.bkt.clouddn.com/left-btn.png"></div>'+
+                            '<div class="pre-btn pre-btn-right"><img src="http://oj7j5nuxv.bkt.clouddn.com/right-btn.png"></div>'+
                         '</div>';
             body.append(preHtml);
             this.IsClick();
