@@ -11,7 +11,8 @@ body{
     min-height: 200px;
     background-color: #fff;
     margin-bottom: 25px;
-    margin-left: 45px;
+    margin-left: 15px;
+    padding-left: 5px;
 }
 .con-item h2{
     height: 40px;
@@ -21,7 +22,7 @@ body{
     opacity:.6;
     line-height: 40px;
     margin-left: 1%;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 10px;
     color: #fff;
     text-align: center;
