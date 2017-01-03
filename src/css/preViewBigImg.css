@@ -1,0 +1,99 @@
+body{
+    background-color: #eee;
+}
+.container{
+    width: 100%;
+    /*padding: 20px 30px;*/
+    background-color: #F5F5F5;
+}
+.con-item{
+    border-left: 2px solid #FFAC13;
+    min-height: 200px;
+    background-color: #fff;
+    margin-bottom: 25px;
+}
+.con-item h2{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: limegreen;
+    opacity:.6;
+    line-height: 40px;
+    margin-left: 1%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-align: center;
+}
+.con-item img{
+    width: 160px;
+    height: 160px;
+}
+/*插件部分*/
+.bg-pre-view{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left:0;
+    background-color: rgba(0,0,0,.6);
+    z-index: 10000;
+    display: none;
+}
+.pre-view-con{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.pre-view-con img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.pre-close-btn{
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    background-color: #eee;
+    border:1px solid #333;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .3s;
+}
+.pre-close-btn:hover{
+    background-color: #ccc;
+}
+.pre-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    background-color: rgba(0,0,0,.8);
+    color: #4b4b4b;
+    font-size: 40px;
+    cursor: pointer;
+}
+.pre-btn-left{
+    left: 5%;
+}
+.pre-btn-right{
+    right: 5%;
+}
+.pre-btn-left img,
+.pre-btn-right img{
+    width: 60px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}
