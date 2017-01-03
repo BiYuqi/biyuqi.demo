@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
+    <title></title>
+    <style>
+        body,html{
+            width: 100%;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            height: 100%;
+        }
+        .header{
+            height: 100px;
+            line-height: 100px;
+            background-color: #31AAE8;
+            text-align: center;
+            color:#fff;
+        }
+        .main{
+            text-align: center;
+        }
+        .main li{
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            color: #fff;
+            margin-bottom: 2px;
+            background-color: #c33;
+        }
+        .loading{
+            display: none;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: green;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="header">
+            <span>我是顶部</span>
+        </div>
+        <ul class="main">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+        </ul>
+        <div class="loading">
+            <span>正在加载....</span>
+        </div>
+    </div>
+    <script type="text/javascript">
+        (function(){
+            var heightSum = {
+                init:function(){
+                    console.log(this.getScrollTop());
+                    console.log(this.getDocHeight());
+                    console.log(this.getWindowHeight());
+                    this.windowScroll();
+                },
+                randomNum:function(min,max){
+                    return Math.floor(Math.random()*(max-min+1)+min);
+                },
+                randomColor:function(){
+                    var color = "#";
+                    var arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+                    for(var i=0;i<6;i++){
+                        var itemIndex = this.randomNum(0,15);
+                        color += arr[itemIndex];
+                    }
+                    return color;
+                },
+                getScrollTop:function(){
+                    var scrollTop;
+                    scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                    return scrollTop;
+                },
+                getDocHeight:function(){
+                    var scrollHeight;
+                    scrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
+                    return scrollHeight;
+                },
+                getWindowHeight:function(){
+                    var windowHeight;
+                    windowHeight = document.compatMode == "CSS1Compat" ?
+                                    document.documentElement.clientHeight:
+                                    document.body.clientHeight;
+                    return windowHeight;
+                },
+                getLoadData:function(){
+                    var conMain = document.querySelector('.main');
+                    var lis = document.createElement('li');
+                    var newText = document.createTextNode("我是加载的数据,我的编号是:"+Math.floor(Math.random()*100));
+                    lis.appendChild(newText);
+                    lis.style.backgroundColor = this.randomColor();
+                    conMain.appendChild(lis);
+                },
+                windowScroll:function(){
+                    var that = this;
+                    var flag = false;//控制正在加载...是否显示
+                    var loading = document.querySelector('.loading');
+                    window.onscroll = function(){
+                        if(that.getDocHeight() == (that.getScrollTop()+that.getWindowHeight())){
+                            flag = true;//满足加载条件后，为true,显示正在加载文本...
+                            setTimeout(function(){
+                                that.getLoadData();
+                                flag = false;//加载后隐藏正在加载文本
+                            },2000)
+                            //是否显示正在加载....
+                            flag === true ? loading.style.display = "block":loading.style.display = "none";
+                        }
+
+                    }
+                }
+            };
+            heightSum.init();
+        })()
+    </script>
+  </body>
+</html>

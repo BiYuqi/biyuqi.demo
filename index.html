@@ -2,9 +2,98 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
         <title>Demo演示</title>
+        <link rel="stylesheet" href="src/css/reset.css">
+        <style>
+            html,body{
+                width: 100%;
+                height: 100%;
+                background-color: #F7F7FC;
+            }
+            .container{
+                width: 100%;
+                height: 100%;
+            }
+            .header{
+                height: 80px;
+                line-height: 80px;
+                text-align: center;
+                color: #fff;
+                font-size: 20px;
+                background-color: #31AAE8;
+            }
+            @media screen and (max-width: 1080px) {
+                .header{
+                    font-size: 14px;
+                    height: 60px;
+                    line-height: 60px;
+                }
+                .demo-item{
+                    width: 150px !important;
+                }
+            }
+            .main-demo{
+                padding: 15px 20px;
+            }
+            .demo-item{
+                width: 200px;
+                min-height: 260px;
+                padding-bottom: 5px;
+                -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+                -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+                transition: all .3s;
+                float: left;
+                margin-right: 15px;
+                margin-bottom: 15px;
+            }
+            .demo-item:hover{
+                box-shadow: 0 2px 20px -1px rgba(0, 0, 0, 0.6);
+                cursor: pointer;
+            }
+            .demo-item a{
+                width: 100%;
+                height: 100%;
+                display: inline-block;
+            }
+            .demo-item a img{
+                width:100%;
+                height: auto;
+                min-height: 160px;
+            }
+            .demo-item a h2{
+                color: #4d6dad;
+                padding: 4px 8px;
+                margin: 0 auto;
+                font-weight: bold;
+                font-size: 18px;
+                word-wrap:break-word;/*换行*/
+            }
+            .demo-item a p{
+                color: #333;
+                margin: 0 auto;
+                padding: 0 8px;
+                font-size: 14px;
+                word-wrap:break-word;
+            }
+        </style>
     </head>
     <body>
-        我是Demo 演示
+        <div class="container">
+            <div class="header">
+                <span>博客用到的demo，平常练习的demo,存放在此</span>
+            </div>
+            <div class="main-demo clearfix">
+                <div class="demo-item">
+                    <a href="src/html/JSHeightWidth.html">
+                        <img src="http://oiukswkar.bkt.clouddn.com/Js-jq.jpg" alt="">
+                        <h2>滑到底部加载数据</h2>
+                        <p>主要技术：原生javascript</p>
+                        <p>阅读文章或者列表时，滑动到底部再加载数据条</p>
+                    </a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
