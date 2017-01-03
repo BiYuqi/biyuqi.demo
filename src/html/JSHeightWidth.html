@@ -66,33 +66,35 @@
         (function(){
             var heightSum = {
                 init:function(){
-                    console.log(this.getScrollTop());
-                    console.log(this.getDocHeight());
-                    console.log(this.getWindowHeight());
-                    this.windowScroll();
+                    this.windowScroll();//这里调用
                 },
+                //随机数范围
                 randomNum:function(min,max){
                     return Math.floor(Math.random()*(max-min+1)+min);
                 },
+                //随机颜色
                 randomColor:function(){
                     var color = "#";
                     var arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
                     for(var i=0;i<6;i++){
-                        var itemIndex = this.randomNum(0,15);
+                        var itemIndex = this.randomNum(0,15);//拿到随机数
                         color += arr[itemIndex];
                     }
                     return color;
                 },
+                //获取滚动高度
                 getScrollTop:function(){
                     var scrollTop;
                     scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
                     return scrollTop;
                 },
+                //获取文档总高
                 getDocHeight:function(){
                     var scrollHeight;
                     scrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
                     return scrollHeight;
                 },
+                //获取浏览器视窗高度
                 getWindowHeight:function(){
                     var windowHeight;
                     windowHeight = document.compatMode == "CSS1Compat" ?
@@ -100,14 +102,16 @@
                                     document.body.clientHeight;
                     return windowHeight;
                 },
+                //模拟数据
                 getLoadData:function(){
                     var conMain = document.querySelector('.main');
-                    var lis = document.createElement('li');
+                    var lis = document.createElement('li');//创建一个li 节点
                     var newText = document.createTextNode("我是加载的数据,我的编号是:"+Math.floor(Math.random()*100));
-                    lis.appendChild(newText);
-                    lis.style.backgroundColor = this.randomColor();
-                    conMain.appendChild(lis);
+                    lis.appendChild(newText);//文本放入li
+                    lis.style.backgroundColor = this.randomColor();//设置背景色
+                    conMain.appendChild(lis);//放入ul 容器
                 },
+                //滑动滚动条时，调用
                 windowScroll:function(){
                     var that = this;
                     var flag = false;//控制正在加载...是否显示
@@ -119,7 +123,7 @@
                                 that.getLoadData();
                                 flag = false;//加载后隐藏正在加载文本
                             },2000)
-                            //是否显示正在加载....
+                            //判断是否显示正在加载....
                             flag === true ? loading.style.display = "block":loading.style.display = "none";
                         }
 
