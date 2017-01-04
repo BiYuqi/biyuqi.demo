@@ -29,5 +29,12 @@
         </div>
         <script src='../lib/jquery.min.js'></script>
         <script src='../lib/preViewBigImg.js'></script>
+        <script>
+            //第一个参数是 拿到内容区域所有图片..container
+            //第二个参数是拿到 图片的索引 即图片所在的容器(不是大容器)名字必须是一样的, .con-item
+            //第二个参数，图片都有同一个li div p 包裹着,这些标签上都有相同的class名字 ex  .con-item
+            var getprev = new module.GetPreView($('.container'),$('.con-item'));
+            getprev.init();
+        </script>
     </body>
 </html>

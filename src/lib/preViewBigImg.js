@@ -1,6 +1,7 @@
-$(function(){
-    function GetPreView(obj){//obj 主内容区（预览里面的图片）
+var module = (function(){
+    function GetPreView(obj,range){//obj 主内容区（预览里面的图片）
         this.imgs = obj.find('img');
+        this.range = range;
         this.index = 0;
     }
     GetPreView.prototype = {
@@ -8,7 +9,6 @@ $(function(){
 		__proto__: GetPreView.prototype.__proto__,
         init:function(){
             this.loadBase();
-            console.log(this.imgs);
         },
         loadBase:function(){
             var body = $('body');
@@ -34,7 +34,7 @@ $(function(){
                 $('.bg-pre-view').fadeIn();
                 var $imgSrc = $(this).attr('src');
                 $('.pre-view-con img').attr('src',$imgSrc);
-                that.index = $(this).parents('.con-item').index();//有陷阱a
+                that.index = $(this).parents(that.range).index();//有陷阱a
             })
         },
         closeClick:function(){
@@ -86,7 +86,7 @@ $(function(){
             })
         }
     };
-    //调用方法
-    var getprev = new GetPreView($('.container'));//想要预览内容区域的盒子，ex .box
-    getprev.init();
-})
+    return {
+        GetPreView:GetPreView
+    }
+})()
