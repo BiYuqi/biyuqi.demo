@@ -70,6 +70,7 @@ var module = (function(){
             if(!this.mobileBtn){//移动端点击按钮 开关
                 this.arrowBtn.hide();
             }else{//
+                this.arrowBtn.show();
                 this.wrapperWidth.on('mouseenter',function(e){
                     that.arrowBtn.fadeIn();//鼠标滑过，显示按钮
                     clearInterval(that.timer);
