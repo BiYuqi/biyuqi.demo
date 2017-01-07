@@ -66,23 +66,25 @@
             position: absolute;
             top: 50%;
             margin-top: -40px;
-            width: 40px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             cursor: pointer;
-            background-color: rgba(0,0,0,.6);
+            background: url('http://oiukswkar.bkt.clouddn.com/banner-btn.png') no-repeat;
             display: none;
         }
         .ss-arrow-left{
-            left: 2%;
+            background-position: 0 0 ;
+            left: 0;
         }
         .ss-arrow-right{
-            right: 2%;
+            background-position: -50px 0;
+            right: 0;
         }
         .ss-arrow-left:hover{
-            background-color: rgba(0,0,0,.4);
+            /*background-color: rgba(0,0,0,.4);*/
         }
         .ss-arrow-right:hover{
-            background-color: rgba(0,0,0,.4);
+            /*background-color: rgba(0,0,0,.4);*/
         }
         </style>
     </head>
@@ -125,7 +127,8 @@
                     time:3000,//轮播时间间隔
                     imgWidth:$('body').width(),//图片宽度 or 图片所在容器宽度
                     imgHeight:450,//图片高度 or 图片所在容器高度
-                    isFlag:false //false 为自动轮播
+                    isFlag:false, //false 为自动轮播
+                    mobileBtn:false//取消移动端按钮点击 取消hover事件
                 })
                 box.init();
             }else {

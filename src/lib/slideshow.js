@@ -13,6 +13,7 @@ var module = (function(){
         this.imgHeight = obj.imgHeight || this.imgs.eq(0).height();
         this.gapTime = obj.time || 3000;//轮播间隔时间
         this.isAutoPlay = obj.isFlag || false;//可选择是否自动轮播
+        this.mobileBtn = obj.mobileBtn || false;//移动端是否显示 左右点击按钮
         this.timer = null;//初始化
     }
     Slideshow.prototype = {
@@ -43,6 +44,10 @@ var module = (function(){
                 width: this.imgWidth,
                 height: this.imgHeight
             });
+            //是否显示移动端点击按钮
+            if(!this.mobileBtn){
+                this.arrowBtn.hide();
+            }
 
             //初始化后，下面的事件在此调用
             this.addAutoPlay();
@@ -62,14 +67,19 @@ var module = (function(){
         },
         stopAutoPlay:function(){
             var that = this;
-            this.wrapperWidth.on('mouseenter',function(e){
-                that.arrowBtn.fadeIn();//鼠标滑过，显示按钮
-                clearInterval(that.timer);
-            });
-            this.wrapperWidth.on('mouseleave',function(e){
-                that.arrowBtn.fadeOut();//鼠标离开，隐藏按钮
-                that.addAutoPlay();
-            })
+            if(!this.mobileBtn){//移动端点击按钮 开关
+                this.arrowBtn.hide();
+            }else{//
+                this.wrapperWidth.on('mouseenter',function(e){
+                    that.arrowBtn.fadeIn();//鼠标滑过，显示按钮
+                    clearInterval(that.timer);
+                });
+                this.wrapperWidth.on('mouseleave',function(e){
+                    that.arrowBtn.fadeOut();//鼠标离开，隐藏按钮
+                    that.addAutoPlay();
+                })
+            }
+
         },
         arrowRightClick:function(){
             var that = this;
