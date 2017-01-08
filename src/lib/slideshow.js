@@ -84,17 +84,38 @@ var module = (function(){
         },
         arrowRightClick:function(){
             var that = this;
+            //防止点击过快，造成的问题  保存初始时间戳
+            var _thistime = Date.now();
             this.arrowBtnRight.on('click',function(){
-                that.index++;
-                that.addAnimate();//运动函数里面 已经处理好index的问题
+                //比较两次点击之间的时间，如果点击过快，return
+                if((Date.now() - _thistime) < 700){
+                    return false;
+                }else{//符合点击范围，执行动画
+                    //时间保留到上次点击的地方
+                    that.index++;
+                    _thistime = Date.now();
+                    //运动函数里面 已经处理好index的问题
+                    that.addAnimate();
+                }
 
             })
         },
         arrowLeftClick:function(){
             var that = this;
+            //防止点击过快，造成的问题  保存初始时间戳
+            var _thistime = Date.now();
             this.arrowBtnLeft.on('click',function(){
-                that.index--;
-                that.addAnimate();//运动函数里面 已经处理好index的问题
+                //比较两次点击之间的时间，如果点击过快，return
+                if((Date.now() - _thistime) < 700){
+                    return false;
+                }else{//符合点击范围，执行动画
+                    //时间保留到上次点击的地方
+                    that.index--;
+                    _thistime = Date.now();
+                    //运动函数里面 已经处理好index的问题
+                    that.addAnimate();
+                }
+
 
             })
         },
@@ -114,7 +135,7 @@ var module = (function(){
             var boxWrapper = $('.ss-item');//图片容器 用来计算图片数量
             this.imgWrapper.animate({
                 marginLeft:-this.imgWidth*that.index
-            },650,function(){
+            },600,function(){
                 if(that.index >= boxWrapper.length-1){
     				that.index = 1;
     			}
@@ -136,4 +157,5 @@ var module = (function(){
     return {
         Slideshow:Slideshow
     }
+
 })()
