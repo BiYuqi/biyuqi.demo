@@ -17,6 +17,7 @@ var module = (function(){
         this.timer = null;//初始化
     }
     Slideshow.prototype = {
+        constructor:Slideshow,
         init:function(){
             //拷贝首尾图片
             var firstImg = this.imgs.eq(0).clone();
@@ -115,8 +116,6 @@ var module = (function(){
                     //运动函数里面 已经处理好index的问题
                     that.addAnimate();
                 }
-
-
             })
         },
         circleClick:function(){

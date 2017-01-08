@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <title>无缝滚动轮播</title>
         <style>
         /*这里用*号，清除默认样式，实属偷懒，可自行写reset*/
         *{
@@ -140,6 +142,7 @@
                     isFlag:false, //false 为自动轮播
                     mobileBtn:true//打开PC端按钮点击 hover事件
                 })
+                console.log(box.constructor == module.Slideshow);
                 box.init();
 
             }
