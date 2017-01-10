@@ -24,7 +24,7 @@
             overflow: hidden;
             position: relative;
         }
-        /*初始5张 后面会用js计算，不用在意此处*/
+        /*demo初始5张 后面会用js计算，不用在意此处*/
         .ss-inner{
             width: 5000px;
         }
@@ -125,7 +125,7 @@
             if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
             || $('body').width() <= 1080) {
                 //移动端
-                var box = new module.Slideshow({
+                var box = new Slideshow({
                     time:3000,//轮播时间间隔
                     imgWidth:$('body').width(),//图片宽度 or 图片所在容器宽度
                     imgHeight:450,//图片高度 or 图片所在容器高度
@@ -135,14 +135,13 @@
                 box.init();
             }else {
                 //PC端
-                var box = new module.Slideshow({
+                var box = new Slideshow({
                     time:3000,//轮播时间间隔
-                    imgWidth:1200,//图片宽度 or 图片所在容器宽度
-                    imgHeight:450,//图片高度 or 图片所在容器高度
+                    imgWidth:1000,//图片宽度 or 图片所在容器宽度
+                    imgHeight:560,//图片高度 or 图片所在容器高度
                     isFlag:false, //false 为自动轮播
                     mobileBtn:true//打开PC端按钮点击 hover事件
                 })
-                console.log(box.constructor == module.Slideshow);
                 box.init();
 
             }

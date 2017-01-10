@@ -1,4 +1,4 @@
-var module = (function(){
+(function(window){
     function Slideshow(obj){
         this.slideShow = obj;//传的形参，当做对象用
         this.wrapperWidth = $('.ss-wrapper');
@@ -153,8 +153,6 @@ var module = (function(){
             })
         }
     }
-    return {
-        Slideshow:Slideshow
-    }
+        window.Slideshow = Slideshow;
 
-})()
+})(window)
