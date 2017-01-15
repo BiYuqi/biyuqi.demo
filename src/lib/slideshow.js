@@ -45,6 +45,10 @@
                 width: this.imgWidth,
                 height: this.imgHeight
             });
+            $('.ss-item img').css({
+                width: this.imgWidth,
+                height: this.imgHeight
+            });
             //是否显示移动端点击按钮
             if(!this.mobileBtn){
                 this.arrowBtn.hide();

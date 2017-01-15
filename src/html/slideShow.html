@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="viewport" content="initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
         <title>无缝滚动轮播</title>
         <style>
         /*这里用*号，清除默认样式，实属偷懒，可自行写reset*/
@@ -123,28 +124,15 @@
         <script src="../lib/slideshow.js"></script>
         <script>
             (function(){
-				if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
-				|| $('body').width() <= 1080) {
-					//移动端
-					var box = new Slideshow({
-						time:4000,//轮播时间间隔
-						imgWidth:$('body').width(),//图片宽度 or 图片所在容器宽度
-						imgHeight:450,//图片高度 or 图片所在容器高度
-						isFlag:false, //false 为自动轮播
-						mobileBtn:false//取消移动端按钮点击 取消hover事件
-					})
-					box.init();
-				}else {
 					//PC端
 					var box = new Slideshow({
 						time:5000,//轮播时间间隔
-						imgWidth:1000,//图片宽度 or 图片所在容器宽度
-						imgHeight:560,//图片高度 or 图片所在容器高度
+						imgWidth:$('body').width(),//图片宽度 or 图片所在容器宽度
+						imgHeight:360,//图片高度 or 图片所在容器高度
 						isFlag:false, //false 为自动轮播
 						mobileBtn:true//打开PC端按钮点击 hover事件
 					})
 					box.init();
-				}
 			})()
 
         </script>
