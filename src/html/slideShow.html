@@ -122,29 +122,30 @@
         <script src="../lib/jquery.min.js"></script>
         <script src="../lib/slideshow.js"></script>
         <script>
-            if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
-            || $('body').width() <= 1080) {
-                //移动端
-                var box = new Slideshow({
-                    time:4000,//轮播时间间隔
-                    imgWidth:$('body').width(),//图片宽度 or 图片所在容器宽度
-                    imgHeight:450,//图片高度 or 图片所在容器高度
-                    isFlag:false, //false 为自动轮播
-                    mobileBtn:false//取消移动端按钮点击 取消hover事件
-                })
-                box.init();
-            }else {
-                //PC端
-                var box = new Slideshow({
-                    time:5000,//轮播时间间隔
-                    imgWidth:1000,//图片宽度 or 图片所在容器宽度
-                    imgHeight:560,//图片高度 or 图片所在容器高度
-                    isFlag:false, //false 为自动轮播
-                    mobileBtn:true//打开PC端按钮点击 hover事件
-                })
-                box.init();
-
-            }
+            (function(){
+				if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+				|| $('body').width() <= 1080) {
+					//移动端
+					var box = new Slideshow({
+						time:4000,//轮播时间间隔
+						imgWidth:$('body').width(),//图片宽度 or 图片所在容器宽度
+						imgHeight:450,//图片高度 or 图片所在容器高度
+						isFlag:false, //false 为自动轮播
+						mobileBtn:false//取消移动端按钮点击 取消hover事件
+					})
+					box.init();
+				}else {
+					//PC端
+					var box = new Slideshow({
+						time:5000,//轮播时间间隔
+						imgWidth:1000,//图片宽度 or 图片所在容器宽度
+						imgHeight:560,//图片高度 or 图片所在容器高度
+						isFlag:false, //false 为自动轮播
+						mobileBtn:true//打开PC端按钮点击 hover事件
+					})
+					box.init();
+				}
+			})()
 
         </script>
     </body>
