@@ -9,9 +9,9 @@
         this.arrowBtnRight = $('.ss-arrow-right');
         this.imgs = this.imgWrapper.find('.ss-item');//图片所在盒子
         this.index = 1;//
-        this.imgWidth = obj.imgWidth || this.imgs.eq(0).width();//设置图片宽度 默认1000
+        this.imgWidth = obj.imgWidth || this.imgs.eq(0).width();//设置图片宽度 
         this.imgHeight = obj.imgHeight || this.imgs.eq(0).height();
-        this.gapTime = obj.time || 3000;//轮播间隔时间
+        this.gapTime = obj.time;
         this.isAutoPlay = obj.isFlag || false;//可选择是否自动轮播
         this.mobileBtn = obj.mobileBtn || false;//移动端是否显示 左右点击按钮
         this.timer = null;//初始化
@@ -36,16 +36,7 @@
                 marginLeft: -this.imgWidth
             });
             //自定义宽高
-            this.wrapperWidth.css({
-                width: this.imgWidth,
-                height: this.imgHeight
-            });
-            //自定义宽高
             $('.ss-item').css({
-                width: this.imgWidth,
-                height: this.imgHeight
-            });
-            $('.ss-item img').css({
                 width: this.imgWidth,
                 height: this.imgHeight
             });

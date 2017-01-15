@@ -21,13 +21,14 @@
         .ss-wrapper{
             width: 100%;
             margin: 0 auto;
-            /*height:564px;*/
+            height:364px;
             overflow: hidden;
             position: relative;
         }
         /*demo初始5张 后面会用js计算，不用在意此处*/
         .ss-inner{
             width: 5000px;
+            height:364px;
         }
         .clearfix{
             display: block;
@@ -38,6 +39,7 @@
         .ss-item{
             float: left;
             width: 100%;
+            height:364px;
             overflow: hidden;
         }
         .ss-item img{
@@ -128,7 +130,6 @@
 					var box = new Slideshow({
 						time:5000,//轮播时间间隔
 						imgWidth:$('body').width(),//图片宽度 or 图片所在容器宽度
-						imgHeight:360,//图片高度 or 图片所在容器高度
 						isFlag:false, //false 为自动轮播
 						mobileBtn:true//打开PC端按钮点击 hover事件
 					})
