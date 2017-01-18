@@ -58,6 +58,15 @@
             #button:hover{
                 background-color: green;
             }
+            .tips-in,
+            .tips-in2{
+                display: none;
+                margin-bottom: 10px !important;
+            }
+            .tips-in a,
+            .tips-in2 a{
+                color: green;
+            }
             @media screen and (max-width:1080px) {
                 #url-text{
                     font-size: 14px;
@@ -106,29 +115,38 @@
             </div>
             <div class="list" id="button">查询</div>
             <div class="list" id="tips"></div>
+            <div class="list tips-in"><a href="https://biyuqi.github.io/2017/01/17/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E6%8B%BC%E6%8E%A5url%E4%B9%8BGET%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/">博客</a></div>
+            <div class="list tips-in2"><a href="https://github.com/BiYuqi/demo/blob/master/src/html/url.html">源码</a></div>
         </div>
         <script>
             (function(){
-                //拿id
+                //拿id  不是重点
                 function $(id){
                     return document.getElementById(id);
                 };
-                //obj是否为空
+                //拿class 不是重点
+                function $C(cla){
+                    return document.getElementsByClassName(cla);
+                };
+                //obj是否为空 可要可不要 检测而已
                 function isEmpty(obj){
                     for(var key in obj){
                         return false;
                     }
                     return true;
                 };
-                //核心函数
+                //核心函数 核心函数 核心函数 getUrl(obj)
                 function getUrl(obj){
-                    var arr = [];
+                    var arr = [];//存参数
                     if(arr.length === 0){
                         arr.push("?");
                     };
+                    //检测对否为obj
                     if( !isEmpty(obj) && typeof obj === "object"){
                         for(i in obj){
+                            //过滤之为空的属性
                             if(obj[i] !== ""){
+                                //依次添加
                                 arr.push(i);
                                 arr.push("=");
                                 arr.push(obj[i]);
@@ -136,9 +154,11 @@
                             }
                         }
                     }
+                    //转为字符串 去掉最后一个& 符号;返回值
                     return arr.join('').replace(/&$/,'');
 
                 };
+                var test;//为了渲染一次提示文本，搞个变量 无需在意
                 //查询
                 $('button').onclick = function(){
                     var username = $('username').value,
@@ -157,54 +177,14 @@
                     //调用函数 输出页面
                     $('url-text-inner').innerHTML = getUrl(user);
                     //友情提示
-                    $("tips").innerHTML = "用后台提供的API(即url)+上面框里的参数就可以完成请求了,每次用户重新输入数据，点击查询，数据会自动更新"
+                    if(!test){
+                        $("tips").innerHTML = "<p>1.用后台提供的API(即url)+上面框里的参数就可以完成请求了</p><p>2.每次用户重新输入数据，点击查询，数据会自动更新</p><p>3.灵活,根据需要储存相应值到对象(对象里面的值正确储存很重要)里面，调用核心函数</p>"
+                        $C('tips-in')[0].style.display = 'block';
+                        $C('tips-in2')[0].style.display = 'block';
+                        test = true
+                    }
 
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                function $$(){
-                    function checkAll() {
-                        var selectall = document.getElementById("selectall");
-                        var allbox = document.getElementsByName("allbox");
-                        if (selectall.checked) {
-                            for (var i = 0; i < allbox.length; i++) {
-                                allbox[i].checked = true;
-                            }
-                        } else {
-                            for (var i = 0; i < allbox.length; i++) {
-                                allbox[i].checked = false;
-                            }
-                        }
-                    }
-                };
             })()
         </script>
     </body>
