@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>仿微博提示可输入剩余字数</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .main,.btns{
+                width: 800px;
+                height: 250px;
+                margin: 0 auto;
+                text-align: center
+            }
+            .txt-area{
+                width: 800px;
+                height: 200px;
+                outline: none;
+                resize: none;
+                font-size: 18px;
+            }
+            .tips{
+                color: #c33;
+            }
+            .btns span{
+                width:200px;
+                display: inline-block;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                cursor: pointer;
+                color: #fff;
+            }
+            .btns span:nth-child(1){
+                background-color: #c33;
+            }
+            .btns span:nth-child(2){
+                background-color: green;
+            }
+            h2{
+                text-align: center;
+                margin: 10px 0;
+            }
+            @media screen and (max-width: 1080px){
+                *{
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                body,html{
+                    width: 100%;
+                    height: 100%;
+                }
+                .main{
+                    width: 100%;
+                    height: 255px;
+                    margin: 0 auto;
+                }
+                .main p{
+                    font-size: 20px;
+                }
+                .txt-area{
+                    width: 100%;
+                    height: 200px;
+                    outline: none;
+                    resize: none;
+                    border: 1px solid green;
+                }
+                .tips{
+                    margin-top: 10px;
+                    font-size: 20px;
+                    color: #c33;
+                }
+                .btns{
+                    text-align: center;
+                    width: 100%;
+                    height: 80px;
+                }
+                .btns span{
+                    height: 40px;
+                    width: 80px;
+                    margin: 0 20px;
+                    line-height: 40px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h2>仿微博提示可输入剩余字数</h2>
+        <div class="main">
+            <textarea class="txt-area"></textarea>
+            <p>还能输入<span class="num-in">150</span>个字符</p>
+            <span class="tips"></span>
+        </div>
+        <div class="btns">
+            <span class="r-zero">置空</span>
+            <span>发布</span>
+        </div>
+        <script>
+            (function(window){
+                function setUnioc(obj){
+                    var textIn = document.querySelector(obj.textIn),
+                        numIn = document.querySelector(obj.numIn),
+                        tipIn = document.querySelector(obj.tips),
+                        rZero = document.querySelector('.r-zero'),
+                        ie = !!window.ActiveXObject;//是否ie
+                    if(ie){
+                        textIn.onpropertychange = fn;
+                    }else{
+                        textIn.addEventListener("input",fn,false);
+                    }
+                    function fn(){
+                        var val = textIn.value;
+                        if(val.length >= obj.len+1){
+                            textIn.value = val.substr(0,obj.len);
+                            numIn.innerText = 0;
+                            tipIn.innerText = obj.tipsText;
+                            textIn.style.borderColor = 'red'
+                        }else{
+                            numIn.innerText = obj.len - val.length;
+                            tipIn.innerText = "";
+                            textIn.style.borderColor = 'green'
+                        }
+                    }
+                    rZero.onclick = function(){
+                        textIn.value = '';
+                        fn();
+                    }
+                }
+
+                setUnioc({
+                    textIn: '.txt-area',
+                    numIn: '.num-in',
+                    tips: '.tips',
+                    len: 150,
+                    tipsText: '字数超出限制'
+                });
+            })(window)
+        </script>
+    </body>
+</html>
