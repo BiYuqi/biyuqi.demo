@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
+    <title></title>
+    <style>
+        body,html{
+            width: 100%;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h3{
+            text-align: center;
+            margin: 20px 20px;
+        }
+        .container{
+            width: 100%;
+            height: 100%;
+        }
+        .target{
+            width: 800px;
+            margin: 0 auto;
+            height: 200px;
+        }
+        .target-inner{
+            display: block;
+            height: 200px;
+            width: 800px;
+            resize: none;
+            outline: none;
+        }
+        .change{
+            text-align: center;
+        }
+        .btn,.btn-zero{
+            height: 40px;
+            line-height: 40px;
+            border-radius: 8px;
+            width: 200px;
+            margin: 15px 2px;
+            text-align: center;
+            display: inline-block;
+            color: #fff;
+            font-size: 16px;
+            background-color: #16A05D;
+            cursor: pointer;
+            transition: all .4s;
+        }
+        .btn-zero{
+            background-color: #464040;
+            color: #f0f0f0;
+        }
+        .btn-zero:hover{
+            background-color: #242E36;
+        }
+        .btn:hover{
+            background-color: #39C47E;
+        }
+        .range{
+            width: 800px;
+            margin: 0 auto;
+            height: 200px;
+            border: 1px dashed #999;
+        }
+        .tips{
+            text-align: center;
+            margin: 2px 0;
+        }
+        @media screen and (max-width: 1080px){
+            .target{
+                width: 100%;
+                margin: 0 auto;
+                height: 200px;
+            }
+            .target-inner{
+                display: block;
+                height: 200px;
+                width: 100%;
+                resize: none;
+                outline: none;
+            }
+            .change{
+                text-align: center;
+            }
+            .btn,.btn-zero{
+                height: 40px;
+                line-height: 40px;
+                border-radius: 8px;
+                width: 40%;
+                margin: 8px 4px;
+                text-align: center;
+                display: inline-block;
+                color: #fff;
+                font-size: 16px;
+                background-color: #16A05D;
+                cursor: pointer;
+                transition: all .4s;
+            }
+            .btn-zero{
+                background-color: #464040;
+                color: #f0f0f0;
+            }
+            .btn-zero:hover{
+                background-color: #242E36;
+            }
+            .btn:hover{
+                background-color: #39C47E;
+            }
+            .range{
+                width: 100%;
+                margin: 0 auto;
+                height: 200px;
+                border: 1px dashed #999;
+            }
+            .tips{
+                text-align: center;
+                margin: 2px 0;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h3>正则匹配字符串英文首字母小写转大写</h3>
+        <div class="tips"></div>
+        <div class="target">
+            <textarea class="target-inner" placeholder="请输入英文文本测试..."></textarea>
+        </div>
+        <div class="change">
+            <span class="btn">转换</span><span class="btn-zero">置空</span>
+        </div>
+        <div class="range">
+
+        </div>
+    </div>
+    <script>
+        (function(){
+            function ToLetterUpper(target){
+                var reg = /["a-zA-Z0-9']+[,.!'-—""]*\s?\n?/g;
+                var range = '';//转化后的内容
+                //匹配的内容大写
+                function ToTarget(match){
+                    return match.toUpperCase();
+                }
+                while(match = reg.exec(target)){
+                    range += match[0].replace(/^[a-z]{1}/g,ToTarget);//调用方法
+                }
+                return range;
+            }
+            function $(tar){
+                return document.querySelector(tar);
+            }
+            $('.btn').onclick = function(){
+                var val = $('.target-inner').value;
+                var reg = /[a-zA-Z0-9,.!\s]/;
+                if(val.length <= 0){
+                    alert("不能为空");
+                    return;
+                }
+                if(!reg.test(val)){
+                    alert("请尽量输入英文测试");
+                    return;
+                }
+                $('.range').innerHTML = ToLetterUpper(val);
+            }
+            $('.btn-zero').onclick = function() {
+                $('.target-inner').value = '';
+            }
+        })()
+
+    </script>
+  </body>
+</html>
