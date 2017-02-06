@@ -159,22 +159,24 @@
                         return document.getElementsByTagName(el);
                     }
                 }
+                //
+                var lis = $$('.container li','li');
+                var modal = $('.modal');
+                var btnCancel = $('.btnCancel');
+                var btnSure = $('.btnSure');
+
                 function show(el){
                     return el.style.display = 'block';
                 }
                 function hide(el){
                     return el.style.display = 'none';
                 }
-                var lis = $$('.container li','li');
-                var modal = $('.modal');
-                var btnCancel = $('.btnCancel');
-                var btnSure = $('.btnSure');
                 function del(fn){
                     btnSure.onclick = function(){
                         hide(modal);
                         fn && fn();
                     }
-                }
+                };
                 lis.forEach(function(v,k){
                     //console.log(this); window
                     v.onclick = function(){
@@ -193,6 +195,8 @@
                 $('.reload').onclick = function(){
                     location.reload();
                 }
+
+                console.log(navigator.appVersion)
             })()
 
         </script>
