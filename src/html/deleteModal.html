@@ -151,8 +151,13 @@
                 function $(el){
                     return document.querySelector(el);
                 }
-                function $$(el){
-                    return document.querySelectorAll(el);
+                function $$(el,els){
+                    if(document.querySelectorAll && el){
+                        return document.querySelectorAll(el);
+                    }
+                    if(els){
+                        return document.getElementsByTagName(el);
+                    }
                 }
                 function show(el){
                     return el.style.display = 'block';
@@ -160,7 +165,7 @@
                 function hide(el){
                     return el.style.display = 'none';
                 }
-                var lis = $$('.container li');
+                var lis = $$('.container li','li');
                 var modal = $('.modal');
                 var btnCancel = $('.btnCancel');
                 var btnSure = $('.btnSure');
