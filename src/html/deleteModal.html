@@ -112,18 +112,17 @@
                     return document.querySelectorAll(el);
                 }
                 var lis = $('.container li');
-                console.log(lis)
+                //console.log(lis)
                 each(lis,function(k,v){
                     //console.log(this); window
                     v.onclick = function(){
-                        //var that = this;
-                        //调用自己写的模态插件
-                        SM({
+                        //调用自己的模态插件
+                        SuperModal({
                             flag:true,
+                            modalTips:"确定要删除吗?",
                             tarFun:function(){
                                 v.remove();
-                            },
-                            modalTips:"确定要删除吗?"
+                            }
                         })
                     }
                 })

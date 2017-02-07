@@ -38,6 +38,12 @@
         function $$SM(el){
             return document.querySelectorAll(el);
         }
+        function addClass(elem,cName){
+        	var reg = new RegExp('(^|\\s)' + cName+ '(\\s|$)');
+        	if(!reg.test(elem.className)){
+        		elem.className += ' ' + cName;
+    	    }
+        }
         function loadData(){
             var p = document.createElement("div");
             p.className = 'super-modal-wrap';
@@ -52,14 +58,18 @@
         //     show($SM('.modal'));
         // }
         if(obj.flag){
+             addClass($SM('.super-modal'),'addAmimal');
+             addClass($SM('.super-inner'),'slideAmi');
              show($SM('.super-modal'));
              show($SM('.super-inner'));
+             show($SM('.super-modal-wrap'))
         }
 
         //
         $SM('.super-btnCancel').addEventListener('click',function(){
             hide($SM('.super-modal'));
             hide($SM('.super-inner'));
+            hide($SM('.super-modal-wrap'));
             $SM('.super-modal-wrap').remove();
         },false)
 
@@ -67,6 +77,7 @@
         $SM('.super-btnSure').addEventListener('click',function(){
             hide($SM('.super-modal'));
             hide($SM('.super-inner'));
+            hide($SM('.super-modal-wrap'));
             $SM('.super-modal-wrap').remove();
             obj.tarFun && obj.tarFun();
         },false)
@@ -77,7 +88,7 @@
         }
 
     }
-    window.SM = function(obj){
+    window.SuperModal = function(obj){
         return new SuperModal(obj)
     };
 })(window)
