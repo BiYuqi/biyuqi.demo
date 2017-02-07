@@ -151,16 +151,11 @@
                 function $(el){
                     return document.querySelector(el);
                 }
-                function $$(el,els){
-                    if(document.querySelectorAll && el){
-                        return document.querySelectorAll(el);
-                    }
-                    if(els){
-                        return document.getElementsByTagName(el);
-                    }
+                function $$(el){
+                    return document.querySelectorAll(el);
                 }
                 //
-                var lis = $$('.container li','li');
+                var lis = $$('.container li');
                 var modal = $('.modal');
                 var btnCancel = $('.btnCancel');
                 var btnSure = $('.btnSure');
@@ -177,7 +172,20 @@
                         fn && fn();
                     }
                 };
-                lis.forEach(function(v,k){
+                //移动端太多浏览器不支持forEach
+                // lis.forEach(function(v,k){
+                //     //console.log(this); window
+                //     v.onclick = function(){
+                //         var that = this;
+                //         //console.log(that); li
+                //         show(modal);
+                //         del(function(){
+                //             that.remove();
+                //         })
+                //     }
+                // });
+                //自定义foreach
+                each(lis,function(k,v){
                     //console.log(this); window
                     v.onclick = function(){
                         var that = this;
@@ -187,7 +195,7 @@
                             that.remove();
                         })
                     }
-                });
+                })
                 btnCancel.onclick = function(){
                     hide(modal);
                 }
@@ -196,7 +204,54 @@
                     location.reload();
                 }
 
-                console.log(navigator.appVersion)
+                //兼容forEach 实现jquery each
+                function each( obj, callback, args ) {
+            		var value,
+            			i = 0,
+            			length = obj.length,
+            			isArray = true;
+
+            		if ( args ) {
+            			if ( isArray ) {
+            				for ( ; i < length; i++ ) {
+            					value = callback.apply( obj[ i ], args );
+
+            					if ( value === false ) {
+            						break;
+            					}
+            				}
+            			} else {
+            				for ( i in obj ) {
+            					value = callback.apply( obj[ i ], args );
+
+            					if ( value === false ) {
+            						break;
+            					}
+            				}
+            			}
+
+            		// A special, fast, case for the most common use of each
+            		} else {
+            			if ( isArray ) {
+            				for ( ; i < length; i++ ) {
+            					value = callback.call( obj[ i ], i, obj[ i ] );
+
+            					if ( value === false ) {
+            						break;
+            					}
+            				}
+            			} else {
+            				for ( i in obj ) {
+            					value = callback.call( obj[ i ], i, obj[ i ] );
+
+            					if ( value === false ) {
+            						break;
+            					}
+            				}
+            			}
+            		}
+            		return obj;
+            	}
             })()
 
         </script>
