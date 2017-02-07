@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.super-modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .8;
+    z-index: 1000;
+    display: none;
+}
+
+.super-inner{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    width: 400px;
+    height: 240px;
+    border-radius: 4px;
+    background-color: #fff;
+    transform: translate(-50%,-50%);
+    z-index: 1200;
+}
+
+.super-inner h2{
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.super-btn{
+    position: absolute;
+    bottom:30px;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    border-radius: 6px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.super-btnCancel{
+    left:60px;
+    background-color: #c33;
+}
+
+.super-btnSure{
+    right:60px;
+    background-color: green;
+}
+
+@media screen and (max-width: 1080px){
+    .super-inner{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        width: 90%;
+        height: 200px;
+        background-color: #fff;
+        transform: translate(-50%,-50%);
+    }
+    .super-btn{
+        position: absolute;
+        bottom:30px;
+        display: inline-block;
+        width: 80px;
+        height: 40px;
+        border-radius: 6px;
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+    }
+    .super-btnCancel{
+        left:40px;
+        background-color: #c33;
+    }
+
+    .super-btnSure{
+        right:40px;
+        background-color: green;
+    }
+
+
+}

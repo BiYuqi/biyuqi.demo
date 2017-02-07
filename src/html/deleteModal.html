@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>美化删除操作之回调</title>
         <meta name="viewport" content="initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
+        <link rel="stylesheet" href="../css/SuperModalLayer.css">
         <style>
             *{
                 margin: 0;
@@ -28,65 +29,11 @@
                 border-radius: 50%;
                 cursor: pointer;
             }
-            .modal{
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #000;
-                opacity: .8;
-                z-index: 1000;
-                display: none;
-            }
-            .inner{
-                position: absolute;
-                top: 50%;
-                left:50%;
-                width: 400px;
-                height: 200px;
-                background-color: #fff;
-                transform: translate(-50%,-50%);
-                z-index: 1200;
-            }
-            .inner h2{
-                text-align: center;
-                margin: 10px 0;
-            }
-            .btn{
-                position: absolute;
-                bottom:20px;
-                display: inline-block;
-                width: 80px;
-                height: 40px;
-                border-radius: 6px;
-                color: #fff;
-                text-align: center;
-                line-height: 40px;
-                cursor: pointer;
-
-            }
-            .btnCancel{
-                left:40px;
-                background-color: #c33;
-            }
-            .btnSure{
-                right:40px;
-                background-color: green;
-            }
-            h3{
-                text-align: center;
-                margin: 10px;
-                color: 999;
-            }
             .reload{
                 width: 100px;
                 height: 40px;
                 line-height: 40px;
                 position: absolute;
-                /*bottom: 20%;
-                left: 50%;
-                transform: translate(-50%,0);*/
                 left: 50%;
                 margin-left: -50px;
                 margin-top: 40px;
@@ -97,18 +44,13 @@
                 font-size: 16px;
                 cursor: pointer;
             }
+            .title-t{
+                text-align: center;
+                margin: 10px;
+            }
             @media screen and (max-width: 1080px){
                 .container{
                     width: 100%;
-                }
-                .inner{
-                    position: absolute;
-                    top: 50%;
-                    left:50%;
-                    width: 90%;
-                    height: 200px;
-                    background-color: #fff;
-                    transform: translate(-50%,-50%);
                 }
                 li{
                     width: 60px;
@@ -125,7 +67,7 @@
         </style>
     </head>
     <body>
-        <h3>美化删除操作之回调函数</h3>
+        <h3 class="title-t">美化删除操作之回调函数</h3>
         <div class="container">
             <ul>
                 <li>1</li>
@@ -134,44 +76,12 @@
                 <li>4</li>
             </ul>
         </div>
-        <div class="modal">
-            <div class="inner">
-                <h2>确定要删除吗？</h2>
-                <div>
-                    <span class="btn btnCancel">取消</span>
-                    <span class="btn btnSure">确定</span>
-                </div>
-            </div>
-        </div>
         <div class="reload">
             刷新页面
         </div>
+        <script src="../lib/SuperModalLayer.js"></script>
         <script>
             (function(){
-                function $(el){
-                    return document.querySelector(el);
-                }
-                function $$(el){
-                    return document.querySelectorAll(el);
-                }
-                //
-                var lis = $$('.container li');
-                var modal = $('.modal');
-                var btnCancel = $('.btnCancel');
-                var btnSure = $('.btnSure');
-
-                function show(el){
-                    return el.style.display = 'block';
-                }
-                function hide(el){
-                    return el.style.display = 'none';
-                }
-                function del(fn){
-                    btnSure.onclick = function(){
-                        hide(modal);
-                        fn && fn();
-                    }
-                };
                 //移动端太多浏览器不支持forEach
                 // lis.forEach(function(v,k){
                 //     //console.log(this); window
@@ -185,25 +95,6 @@
                 //     }
                 // });
                 //自定义foreach
-                each(lis,function(k,v){
-                    //console.log(this); window
-                    v.onclick = function(){
-                        var that = this;
-                        //console.log(that); li
-                        show(modal);
-                        del(function(){
-                            that.remove();
-                        })
-                    }
-                })
-                btnCancel.onclick = function(){
-                    hide(modal);
-                }
-                //
-                $('.reload').onclick = function(){
-                    location.reload();
-                }
-
                 //兼容forEach 实现jquery each
                 function each(obj,callback){
                     var i = 0,
@@ -217,6 +108,32 @@
                     }
                     return obj;
                 }
+                function $(el){
+                    return document.querySelectorAll(el);
+                }
+                var lis = $('.container li');
+                console.log(lis)
+                each(lis,function(k,v){
+                    //console.log(this); window
+                    v.onclick = function(){
+                        //var that = this;
+                        //调用自己写的模态插件
+                        SM({
+                            flag:true,
+                            tarFun:function(){
+                                v.remove();
+                            },
+                            modalTips:"确定要删除吗?"
+                        })
+                    }
+                })
+
+                //
+                document.querySelector('.reload').onclick = function(){
+                    location.reload();
+                }
+
+
             })()
 
         </script>
