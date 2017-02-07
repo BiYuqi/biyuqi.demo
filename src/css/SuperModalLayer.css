@@ -56,17 +56,17 @@
     animation: change2 .4s linear;
 }
 @-webkit-keyframes change2{
-    0% {top: -50%; }
-    10% {top: -40%; }
-    20% {top: -30%; }
-    30% {top: -20%; }
-    40% {top: -10%;}
-    50% {top: 0%; }
-    60% {top: 10%; }
-    70% {top: 25%; }
-    80% {top: 35%; }
-    90% {top: 45%; }
-    100% {top: 50%;}
+    0% {top: -50%; opacity: 0;}
+    10% {top: -40%; opacity: 0.2; }
+    20% {top: -30%; opacity: 0.3; }
+    30% {top: -20%; opacity: 0.4;}
+    40% {top: -10%;opacity: 0.5;}
+    50% {top: 0%; opacity: 0.6;}
+    60% {top: 10%; opacity: 0.7;}
+    70% {top: 25%; opacity: 0.75;}
+    80% {top: 35%; opacity: 0.85;}
+    90% {top: 45%; opacity: 0.95;}
+    100% {top: 50%;opacity: 1;}
 }
 .super-inner h2{
     text-align: center;
