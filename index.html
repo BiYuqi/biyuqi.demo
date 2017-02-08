@@ -108,61 +108,35 @@
                 <span>Demo展示</span>
             </div>
             <div class="main-demo clearfix">
-                <div class="demo-item">
-                    <a href="src/html/JSHeightWidth.html">
-                        <img src="http://oiukswkar.bkt.clouddn.com/Js-jq.jpg" alt="">
-                        <h2>滑到底部加载数据</h2>
-                        <p>主要技术：原生javascript</p>
-                        <p>阅读文章或者列表时，滑动到底部再加载数据条</p>
-                    </a>
-                </div>
-                <div class="demo-item">
-                    <a href="src/html/preViewBigImg.html">
-                        <img src="http://oiukswkar.bkt.clouddn.com/preview.jpg" alt="">
-                        <h2>点击查看(预览)大图(PC端)</h2>
-                        <p>主要技术：Jquery</p>
-                        <p>适用不连续图片</p>
-                    </a>
-                </div>
-                <div class="demo-item">
-                    <a href="src/html/slideShow.html">
-                        <img src="http://oiukswkar.bkt.clouddn.com/slide-show.jpg" alt="">
-                        <h2>无缝滚动轮播插件</h2>
-                        <p>主要技术：Jquery</p>
-                        <p>依照结构,快速实现轮播，配置灵活</p>
-                    </a>
-                </div>
-                <div class="demo-item">
-                    <a href="src/html/url.html">
-                        <img src="http://oiukswkar.bkt.clouddn.com/url.jpg" alt="">
-                        <h2>url之GET请求拼接参数</h2>
-                        <p>主要技术：原生js</p>
-                        <p>方便快速得到请求参数</p>
-                    </a>
-                </div>
-                <div class="demo-item">
-                    <a href="src/html/oninput.html">
-                        <img src="http://oiukswkar.bkt.clouddn.com/weibo.jpg" alt="">
-                        <h2>仿微博提示可输入剩余字数</h2>
-                        <p>主要技术：原生js</p>
-                    </a>
-                </div>
-                <div class="demo-item">
-                    <a href="src/html/letToUper.html">
-                        <img src="http://oiukswkar.bkt.clouddn.com/letter.jpg" alt="">
-                        <h2>正则匹配字符串英文首字母小写转大写</h2>
-                        <p>主要技术：原生js</p>
-                    </a>
-                </div>
-                <div class="demo-item">
-                    <a href="src/html/deleteModal.html">
-                        <img src="http://oiukswkar.bkt.clouddn.com/coding.jpg" alt="">
-                        <h2>美化删除操作之回调函数</h2>
-                        <p>主要技术：原生js</p>
-                        <p>提升用户体验，易于操作</p>
-                    </a>
-                </div>
             </div>
         </div>
+        <script src="src/lib/index.js"></script>
+        <script>
+            ajax({
+                url:"src/data/data.json",
+                type:"GET",
+                boolType:true,
+                dataType:"JSON",
+                success:function(data){
+                    console.log(data.length);
+                    var str = '';
+                    for(var i = 0;i < data.length;i++){
+                            str += '<div class="demo-item">'
+                                +    '<a href="'+data[i].url+'">'
+                                +        '<img src="'+data[i].img+'" alt="">'
+                                +        '<h2>'+data[i].name+'</h2>'
+                                +        '<p>'+data[i].tech+'</p>'
+                                +        '<p>'+data[i].main+'</p>'
+                                +    '</a>'
+                                +    '</div>';
+                    }
+                    var mainDemo = document.querySelector('.main-demo');
+                    mainDemo.innerHTML = str;
+                },
+                error:function(error){
+                    console.log(error);
+                }
+            })
+        </script>
     </body>
 </html>
