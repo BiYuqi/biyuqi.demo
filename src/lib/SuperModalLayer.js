@@ -1,12 +1,12 @@
 (function(window){
     function SuperModal(obj){
         var str = '',
-            cssCode = '';
-
+            cssCode = '',
+            tips = obj.modalTips || '确定要删除吗？';
             str += '<div class="super-modal">'
                 +   '</div>'
                 +   '<div class="super-inner">'
-                +       '<h2 class="super-title">'+obj.modalTips+'</h2>'
+                +       '<h2 class="super-title">'+tips+'</h2>'
                 +       '<div>'
                 +           '<span class="super-btn super-btnCancel">取消</span>'
                 +           '<span class="super-btn super-btnSure">确定</span>'
@@ -81,11 +81,6 @@
             $SM('.super-modal-wrap').remove();
             obj.tarFun && obj.tarFun();
         },false)
-
-        //modalTips
-        if(!obj.modalTips){
-            $SM('.super-title').innerHTML = '确定要删除吗？'
-        }
 
     }
     window.SuperModal = function(obj){
