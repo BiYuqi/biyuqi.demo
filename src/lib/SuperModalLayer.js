@@ -13,7 +13,7 @@
                 +       '</div>'
                 +   '</div>';
 
-        //动态插入css//本插件未用到
+        //动态插入css 本插件暂未未用到 暂不删除
         function setCss(cssCode){
             var style = document.createElement('style');
                 style.type = 'text/css';
@@ -50,35 +50,39 @@
             document.body.appendChild(p);
             $SM('.super-modal-wrap').innerHTML = str;
         }
-        // setCss(cssCode);
         loadData();
-
-        //
-        // $SM(obj.targetAim).onclick = function(){
-        //     show($SM('.modal'));
-        // }
-        if(obj.flag){
+        function allShow(){
+            show($SM('.super-modal'));
+            show($SM('.super-inner'));
+            show($SM('.super-modal-wrap'))
+        }
+        function allHide(){
+            hide($SM('.super-modal'));
+            hide($SM('.super-inner'));
+            hide($SM('.super-modal-wrap'));
+        }
+        function removeAll(){
+            $SM('.super-modal-wrap').remove();
+        }
+        if(obj.isFlag){
              addClass($SM('.super-modal'),'addAmimal');
              addClass($SM('.super-inner'),'slideAmi');
-             show($SM('.super-modal'));
-             show($SM('.super-inner'));
-             show($SM('.super-modal-wrap'))
+             allShow();
         }
-
+        $SM('.super-modal').addEventListener('click',function(){
+            //allHide();
+            //removeAll();
+            //暂不实现点击背景  提示框消失功能  有需要的 可以打开注释，即可实现
+        },false)
         //
         $SM('.super-btnCancel').addEventListener('click',function(){
-            hide($SM('.super-modal'));
-            hide($SM('.super-inner'));
-            hide($SM('.super-modal-wrap'));
-            $SM('.super-modal-wrap').remove();
+            allHide();
+            removeAll();
         },false)
-
         //
         $SM('.super-btnSure').addEventListener('click',function(){
-            hide($SM('.super-modal'));
-            hide($SM('.super-inner'));
-            hide($SM('.super-modal-wrap'));
-            $SM('.super-modal-wrap').remove();
+            allHide();
+            removeAll();
             obj.tarFun && obj.tarFun();
         },false)
 
