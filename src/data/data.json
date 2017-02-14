@@ -14,13 +14,6 @@
         "main":"适用特定容器内图片"
     },
     {
-        "url":"src/html/slideShow.html",
-        "img":"src/img/slide.jpg",
-        "name":"无缝滚动轮播插件",
-        "tech":"主要技术：Jquery",
-        "main":""
-    },
-    {
         "url":"src/html/url.html",
         "img":"http://oiukswkar.bkt.clouddn.com/url.jpg",
         "name":"url之GET请求拼接参数",
