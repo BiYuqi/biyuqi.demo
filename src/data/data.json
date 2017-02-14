@@ -15,7 +15,7 @@
     },
     {
         "url":"src/html/url.html",
-        "img":"http://oiukswkar.bkt.clouddn.com/url.jpg",
+        "img":"src/img/url.jpg",
         "name":"url之GET请求拼接参数",
         "tech":"主要技术：原生javascript",
         "main":"阅读文章或者列表时，滑动到底部再加载数据条"
