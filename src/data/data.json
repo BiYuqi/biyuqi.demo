@@ -18,7 +18,7 @@
         "img":"src/img/slide.jpg",
         "name":"无缝滚动轮播插件",
         "tech":"主要技术：Jquery",
-        "main":"依照结构,快速实现轮播，配置灵活"
+        "main":""
     },
     {
         "url":"src/html/url.html",
@@ -32,20 +32,20 @@
         "img":"http://oiukswkar.bkt.clouddn.com/weibo.jpg",
         "name":"仿微博提示可输入剩余字数",
         "tech":"主要技术：原生js",
-        "main":""
+        "main":"主要用到oniput事件监听，字符串截取"
     },
     {
         "url":"src/html/letToUper.html",
-        "img":"http://oiukswkar.bkt.clouddn.com/letter.jpg",
+        "img":"src/img/rule.jpg",
         "name":"正则匹配字符串英文首字母小写转大写",
         "tech":"主要技术：原生javascript",
-        "main":""
+        "main":"主要用到正则exec,字符串的replace"
     },
     {
         "url":"src/html/deleteModal.html",
         "img":"src/img/code.jpg",
         "name":"美化删除操作之回调函数",
         "tech":"主要技术：原生javascript",
-        "main":"提升用户体验，扩展性强"
+        "main":"提升用户体验，扩展性强,可复用"
     }
 ]

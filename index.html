@@ -135,44 +135,45 @@
         </div>
         <script src="src/lib/index.js"></script>
         <script>
-            ajax({
-                url:"src/data/data.json",
-                type:"GET",
-                boolType:true,
-                dataType:"JSON",
-                success:function(data){
+            window.onload = function(){
+                ajax({
+                    url:"src/data/data.json",
+                    type:"GET",
+                    boolType:true,
+                    dataType:"JSON",
+                    success:function(data){
 
-                    var str = '';
-                    var allUl = document.querySelectorAll('ul');
-                    for(var i = 0;i < data.length;i++){
+                        var str = '';
+                        var allUl = document.querySelectorAll('ul');
+                        for(var i = 0;i < data.length;i++){
 
-                            var div = document.createElement('div');
-                            str = '<div class="demo-item">'
-                                +    '<a href="'+data[i].url+'">'
-                                +        '<img src="'+data[i].img+'" alt="">'
-                                +        '<h2>'+data[i].name+'</h2>'
-                                +        '<p>'+data[i].tech+'</p>'
-                                +        '<p>'+data[i].main+'</p>'
-                                +    '</a>'
-                                +    '</div>';
+                                var div = document.createElement('div');
+                                str = '<div class="demo-item">'
+                                    +    '<a href="'+data[i].url+'">'
+                                    +        '<img src="'+data[i].img+'" alt="">'
+                                    +        '<h2>'+data[i].name+'</h2>'
+                                    +        '<p>'+data[i].tech+'</p>'
+                                    +        '<p>'+data[i].main+'</p>'
+                                    +    '</a>'
+                                    +    '</div>';
 
-                            div.innerHTML = str;
-                            var minHeightUl = allUl[0];
+                                div.innerHTML = str;
+                                var minHeightUl = allUl[0];
 
-                            for(var j=0;j<allUl.length;j++){
-                                if(minHeightUl.offsetHeight > allUl[j].offsetHeight){
-                                    minHeightUl = allUl[j];
+                                for(var j=0;j<allUl.length;j++){
+                                    if(minHeightUl.offsetHeight > allUl[j].offsetHeight){
+                                        minHeightUl = allUl[j];
+                                    }
                                 }
-                            }
-                            minHeightUl.appendChild(div);
+                                minHeightUl.appendChild(div);
+                        }
+                    },
+                    error:function(error){
+                        console.log(error);
                     }
-                    // var mainDemo = document.querySelector('.main-demo');
-                    // mainDemo.innerHTML = str;
-                },
-                error:function(error){
-                    console.log(error);
-                }
-            })
+                })
+            }
+
         </script>
     </body>
 </html>
