@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
     <title></title>
+    <link rel="stylesheet" href="../css/SuperModalLayer.css">
     <style>
         body,html{
             width: 100%;
@@ -137,6 +138,7 @@
 
         </div>
     </div>
+    <script src="../lib/SuperModalLayer.js"></script>
     <script>
         (function(){
             function ToLetterUpper(target){
@@ -158,11 +160,23 @@
                 var val = $('.target-inner').value;
                 var reg = /[a-zA-Z0-9,.!\s]/;
                 if(val.length <= 0){
-                    alert("不能为空");
+                    SuperModal({
+                        isFlag:true,
+                        modalTips:"不能为空啊...",
+                        tarFun:function(){
+
+                        }
+                    })
                     return;
                 }
                 if(!reg.test(val)){
-                    alert("请尽量输入英文测试");
+                    SuperModal({
+                        isFlag:true,
+                        modalTips:"请输入英文测试哦...",
+                        tarFun:function(){
+
+                        }
+                    })
                     return;
                 }
                 $('.range').innerHTML = ToLetterUpper(val);
