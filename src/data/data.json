@@ -1,7 +1,7 @@
 [
     {
         "url":"src/html/JSHeightWidth.html",
-        "img":"http://oiukswkar.bkt.clouddn.com/Js-jq.jpg",
+        "img":"src/img/load.jpg",
         "name":"滑到底部加载数据",
         "tech":"主要技术：原生javascript",
         "main":"阅读文章或者列表时，滑动到底部再加载数据条"
@@ -15,7 +15,7 @@
     },
     {
         "url":"src/html/slideShow.html",
-        "img":"http://oiukswkar.bkt.clouddn.com/slide-show.jpg",
+        "img":"src/img/slide.jpg",
         "name":"无缝滚动轮播插件",
         "tech":"主要技术：Jquery",
         "main":"依照结构,快速实现轮播，配置灵活"
@@ -43,7 +43,7 @@
     },
     {
         "url":"src/html/deleteModal.html",
-        "img":"http://oiukswkar.bkt.clouddn.com/coding.jpg",
+        "img":"src/img/code.jpg",
         "name":"美化删除操作之回调函数",
         "tech":"主要技术：原生javascript",
         "main":"提升用户体验，扩展性强"
