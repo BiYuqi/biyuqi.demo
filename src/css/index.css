@@ -1,0 +1,134 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #F7F7FC;
+    box-sizing: border-box;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+}
+.container{
+    width: 100%;
+    height: 100%;
+}
+.header{
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    background-color: #144E59;
+    box-shadow: 1px 1px 4px 2px #001520;
+}
+.header a{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.header a img{
+    width: 40px;
+}
+.main-demo{
+    width: 1128px;
+    margin: 20px auto;
+}
+.main-demo ul{
+    list-style: none;
+    float: left;
+    width: 250px;
+    margin:5px 16px;
+}
+.demo-item{
+    margin-bottom: 15px;
+    border:1px solid #ddd;
+    padding: 15px;
+    transition: all .5s;
+    background-color: #fff;
+}
+.demo-item:hover{
+    box-shadow: 1px 1px 6px 2px #ccc;
+    transform: translate3d(0,-4px,0);
+}
+.demo-item a{
+    display: block;
+}
+.demo-item a h2{
+    color: #4d6dad;
+    margin: 8px auto;
+    font-weight: bold;
+    font-size: 18px;
+    word-wrap: break-word;
+}
+.demo-item a p{
+    color: #333;
+    margin: 8px auto;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+.demo-item a img{
+    width: 100%;
+    display: block;
+}
+@media screen and (max-width: 1080px) {
+    .header{
+        font-size: 18px;
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+    }
+    .header a{
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        position: absolute;
+        right: 8px;
+        top: 10px;
+    }
+    .main-demo{
+        width: 100%;
+        margin: 10px auto;
+    }
+    .main-demo ul{
+        list-style: none;
+        float: left;
+        width: 22%;
+        margin:1.5%;
+    }
+    .demo-item{
+        margin-bottom: 10px;
+        border:1px solid #ddd;
+        padding: 4px;
+        transition: all .5s;
+        background-color: #fff;
+    }
+    .demo-item:hover{
+        box-shadow: 1px 1px 6px 2px #ccc;
+        transform: translate3d(0,-4px,0);
+    }
+    .demo-item a{
+        display: block;
+    }
+    .demo-item a h2{
+        color: #4d6dad;
+        margin: 8px auto;
+        font-weight: bold;
+        font-size: 12px;
+        word-wrap: break-word;
+    }
+    .demo-item a p{
+        color: #333;
+        font-size: 10px;
+        word-wrap: break-word;
+        display: none;
+    }
+    .demo-item a img{
+        width: 100%;
+        display: block;
+    }
+
+}

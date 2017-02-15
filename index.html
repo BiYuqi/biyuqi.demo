@@ -6,126 +6,13 @@
         <title>Demo演示</title>
         <link rel="stylesheet" href="src/css/reset.css">
         <link rel="shortcut icon" href="src/img/bitbug_favicon.ico">
-        <style>
-            html,body{
-                width: 100%;
-                height: 100%;
-                background-color: #F7F7FC;
-                box-sizing: border-box;
-            }
-            *{
-                box-sizing: border-box;
-            }
-            .container{
-                width: 100%;
-                height: 100%;
-            }
-            .header{
-                height: 80px;
-                line-height: 80px;
-                text-align: center;
-                color: #fff;
-                font-size: 20px;
-                background-color: #144E59;
-                box-shadow: 1px 1px 4px 2px #001520;
-            }
-            .main-demo{
-                width: 1128px;
-                margin: 20px auto;
-            }
-            .main-demo ul{
-                list-style: none;
-                float: left;
-                width: 250px;
-                margin:5px 16px;
-            }
-            .demo-item{
-                margin-bottom: 15px;
-                border:1px solid #ddd;
-                padding: 15px;
-                transition: all .5s;
-                background-color: #fff;
-            }
-            .demo-item:hover{
-                box-shadow: 1px 1px 6px 2px #ccc;
-                transform: translate3d(0,-4px,0);
-            }
-            .demo-item a{
-                display: block;
-            }
-            .demo-item a h2{
-                color: #4d6dad;
-                margin: 8px auto;
-                font-weight: bold;
-                font-size: 18px;
-                word-wrap: break-word;
-            }
-            .demo-item a p{
-                color: #333;
-                margin: 8px auto;
-                font-size: 14px;
-                word-wrap: break-word;
-            }
-            .demo-item a img{
-                width: 100%;
-                display: block;
-            }
-            @media screen and (max-width: 1080px) {
-                .header{
-                    font-size: 18px;
-                    width: 100%;
-                    height: 60px;
-                    line-height: 60px;
-                }
-                .main-demo{
-                    width: 100%;
-                    margin: 10px auto;
-                }
-                .main-demo ul{
-                    list-style: none;
-                    float: left;
-                    width: 22%;
-                    margin:1.5%;
-                }
-                .demo-item{
-                    margin-bottom: 10px;
-                    border:1px solid #ddd;
-                    padding: 4px;
-                    transition: all .5s;
-                    background-color: #fff;
-                }
-                .demo-item:hover{
-                    box-shadow: 1px 1px 6px 2px #ccc;
-                    transform: translate3d(0,-4px,0);
-                }
-                .demo-item a{
-                    display: block;
-                }
-                .demo-item a h2{
-                    color: #4d6dad;
-                    margin: 8px auto;
-                    font-weight: bold;
-                    font-size: 12px;
-                    word-wrap: break-word;
-                }
-                .demo-item a p{
-                    color: #333;
-                    /*margin: 8px auto;*/
-                    font-size: 10px;
-                    word-wrap: break-word;
-                }
-                .demo-item a img{
-                    width: 100%;
-                    display: block;
-                }
-
-            }
-        </style>
+        <link rel="stylesheet" href="src/css/index.css">
     </head>
     <body>
         <div class="container">
             <div class="header">
-                <span>Demo展示</span>
+                <span>DEMO展示</span>
+                <a href="https://biyuqi.github.io/" target="_blank"><img src="src/img/timg.png" alt=""></a>
             </div>
             <div class="main-demo clearfix">
                 <ul class="box"></ul>
@@ -143,11 +30,10 @@
                     boolType:true,
                     dataType:"JSON",
                     success:function(data){
-
                         var str = '';
                         var allUl = document.querySelectorAll('ul');
+                        var minHeightUl = allUl[0];
                         for(var i = 0;i < data.length;i++){
-
                                 var div = document.createElement('div');
                                 str = '<div class="demo-item">'
                                     +    '<a href="'+data[i].url+'" target="_blank">'
@@ -157,10 +43,7 @@
                                     +        '<p>'+data[i].main+'</p>'
                                     +    '</a>'
                                     +    '</div>';
-
                                 div.innerHTML = str;
-                                var minHeightUl = allUl[0];
-
                                 for(var j=0;j<allUl.length;j++){
                                     if(minHeightUl.offsetHeight > allUl[j].offsetHeight){
                                         minHeightUl = allUl[j];
