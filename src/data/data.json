@@ -40,5 +40,12 @@
         "name":"美化删除操作之回调函数",
         "tech":"主要技术：原生javascript",
         "main":"提升用户体验，扩展性强,可复用"
+    },
+    {
+        "url":"src/html/touch.html",
+        "img":"src/img/color-touch.jpg",
+        "name":"简版移动端手势判断小插件",
+        "tech":"主要技术：原生javascript",
+        "main":"简单场景下的手势判断"
     }
 ]
