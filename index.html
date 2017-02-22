@@ -23,7 +23,7 @@
         </div>
         <script src="src/lib/index.js"></script>
         <script>
-            window.onload = function(){
+            (function(){
                 ajax({
                     url:"src/data/data.json",
                     type:"GET",
@@ -56,8 +56,11 @@
                         console.log(error);
                     }
                 })
-            }
-
+                function $(el){
+                    return document.querySelector(el);
+                }
+                $('.container').style.height = document.body.scrollHeight +30+'px';
+            })()
         </script>
     </body>
 </html>
