@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>正则简单测试工具</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+        <link rel="shortcut icon" href="../img/bitbug_favicon.ico">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body{
+                font-family: 'Microsoft Yahei';
+                font-size: 14px;
+                overflow: hidden;
+                background-color: #F7F7F7;
+            }
+            .container{
+                width: 800px;
+                margin: 0 auto;
+                min-height: 600px;
+                border: 1px solid #eee;
+                padding: 15px 5px;
+                position: relative;
+                background-color: #FAFAFA;
+            }
+            .header h2{
+                text-align: center;
+                margin: 15px 0;
+                color: #457ABB;
+            }
+            .regexp{
+                height: 40px;
+                width: 98%;
+                margin: 0 auto;
+                position: relative;
+                border: 1px solid #ccc;
+            }
+            .regexp .wrap-input{
+                height: 38px;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .wrap-input label{
+                width: 20px;
+                height: 38px;
+                line-height: 38px;
+                text-align: center;
+                display: inline-block;
+                color: #48A2DB;
+                font-weight: bold;
+            }
+            .wrap-input .label1{
+                border-right: 1px solid #ccc;
+            }
+            .wrap-input .label2{
+                border-left: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+            }
+            .regexp input{
+                height: 38px;
+                width: 80%;
+                outline: none;
+                border: none;
+                padding-left: 10px;
+                font-size: 16px;
+                color: #48A2DB;
+                font-weight: normal;
+                letter-spacing: 2px;
+            }
+            .regexp .selector{
+                width: 100px;
+                height: 38px;
+                outline: none;
+                border: none;
+                font-size: 20px;
+                color: green;
+            }
+            .test-result{
+                width: 98%;
+                min-height: 200px;
+                margin: 30px auto;
+            }
+            .test-result textarea{
+                width: 100%;
+                min-height: 300px;
+                outline: none;
+                resize:none;
+                font-size: 16px;
+                border: none;
+                border: 1px solid #ccc;
+                padding: 2px;
+            }
+            .btn-sure-wrap{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            .btn-sure{
+                width: 100px;
+                height: 35px;
+                line-height: 35px;
+                text-align: center;
+                background-color: #45A3DF;
+                color: #fafafa;
+                transition: all .5s;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            .last-result{
+                width: 98%;
+                margin: 25px auto 0;
+                height: 35px;
+                line-height: 35px;
+                text-align: center;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 30px;
+            }
+            .btn-inner{
+                height: 35px;
+                line-height: 35px;
+            }
+            .btn-inner span,
+            .btn-inner2 span{
+                display: inline-block;
+                width: 100px;
+                height: 35px;
+                line-height: 35px;
+                text-align: center;
+                background-color: #1BA261;
+                color: #fafafa;
+                cursor: pointer;
+                font-weight: bold;
+                transition: all .5s;
+            }
+            .btn-inner2 .btn-match,
+            .btn-inner2 .btn-exec{
+                background-color: #4BC9C1;
+            }
+            .btn-match:hover,
+            .btn-exec:hover,
+            .btn-sure:hover{
+                background-color: #2C7CAF;
+            }
+            .tips{
+                position: absolute;;
+                bottom: 30px;
+                right: 20px;
+                color: #aaa;
+            }
+            @media screen and (max-width : 1080px) {
+                .container{
+                    width: 100%;
+                }
+                .btn-inner span,
+                .btn-inner2 span{
+                    width: 80px;
+                    font-size: 12px;
+                    font-weight: normal;;
+                }
+                .btn-inner2 .btn-match,
+                .btn-inner2 .btn-exec{
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h2>正则简单测试工具</h2>
+        </div>
+        <div class="container">
+            <div class="regexp">
+                <div class="wrap-input">
+                    <label for="" class="label1">/</label>
+                    <input type="text" class="reg-val" placeholder="输入测试正则">
+                    <label for="" class="label2">/</label>
+                    <select class="selector">
+                      <option value ="" selected></option>
+                      <option value ="g">g</option>
+                      <option value ="i">i</option>
+                      <option value="m">m</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="test-result">
+                <textarea name="name" placeholder="输入测试数据..Ctrl+Enter可自动校验"></textarea>
+            </div>
+            <div class="btn-sure-wrap">
+                <div class="btn-inner">
+                    <span class="btn-reg">置空正则</span>
+                    <span class="btn-data">置空数据</span>
+                </div>
+                <div class="btn-inner2">
+                    <span class="btn-match">match数据</span>
+                    <span class="btn-exec">exec数据</span>
+                    <span class="btn-sure">验证</span>
+                </div>
+            </div>
+            <div class="last-result">
+
+            </div>
+            <div class="tips">注:match数据 exec数据仅支持在控制台查看</div>
+        </div>
+        <script>
+            (function(){
+                function $(el){
+                    return document.querySelector(el);
+                }
+                var btnSure = $('.btn-sure'),
+                    lastRes = $('.last-result'),
+                    btnReg = $('.btn-reg'),
+                    btnData = $('.btn-data'),
+                    btnMatch = $('.btn-match'),
+                    btnExec = $('.btn-exec');
+                function check(){
+                    var input = $('.reg-val').value,
+                        select = $('.selector').value,
+                        testRes = $('.test-result textarea').value;
+                    var reg = new RegExp(''+input+'',''+select+'');
+                    if(input.length <=0 || testRes.length<=0){
+                        return;
+                    }
+                    lastRes.style.color = reg.test(testRes) == true ? 'green':'#c33';
+                    lastRes.innerHTML = reg.test(testRes);
+                }
+                btnSure.onclick = function(){
+                    check();
+                }
+                document.onkeydown = function(e){
+	                var e = e || window.event;
+                    if (e.ctrlKey && e.keyCode == 13) {
+                        check();
+            		}
+                }
+                btnReg.onclick = function(){
+                    $('.reg-val').value = '';
+                }
+                btnData.onclick = function(){
+                    $('.test-result textarea').value = '';
+                }
+                $('.reg-val').onfocus = function(){
+                    lastRes.innerHTML = '';
+                }
+                $('.test-result textarea').onfocus = function(){
+                    lastRes.innerHTML = '';
+                }
+                btnMatch.onclick = function(){
+                    var input = $('.reg-val').value,
+                        select = $('.selector').value,
+                        testRes = $('.test-result textarea').value;
+                    var reg = new RegExp(''+input+'',''+select+'');
+                    if(input.length <=0 || testRes.length<=0){
+                        return;
+                    }
+                    console.log(testRes.match(reg))
+                }
+                btnExec.onclick = function(){
+                    var input = $('.reg-val').value,
+                        select = $('.selector').value,
+                        testRes = $('.test-result textarea').value;
+                    var reg = new RegExp(''+input+'',''+select+'');
+                    if(input.length <=0 || testRes.length<=0){
+                        return;
+                    }
+                    console.log(reg.exec(testRes))
+                }
+            })()
+        </script>
+    </body>
+</html>

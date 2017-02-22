@@ -47,5 +47,12 @@
         "name":"简版移动端手势判断小插件",
         "tech":"主要技术：原生javascript",
         "main":"简单场景下的手势判断"
+    },
+    {
+        "url":"src/html/regtool.html",
+        "img":"src/img/regtool.jpg",
+        "name":"正则简单测试工具",
+        "tech":"主要技术：原生javascript",
+        "main":"方便编码时进行简单测试"
     }
 ]
