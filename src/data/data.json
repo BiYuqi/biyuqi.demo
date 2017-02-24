@@ -59,6 +59,7 @@
         "url":"src/html/preimg.html",
         "img":"src/img/pre-img.jpg",
         "name":"HTML5实现上传预览预缩图片",
-        "tech":"主要技术：原生javascript canvas"
+        "tech":"主要技术：原生javascript canvas",
+        "main":""
     }
 ]
