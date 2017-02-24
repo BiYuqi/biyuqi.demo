@@ -25,7 +25,13 @@ body{
     color: #fff;
     font-size: 20px;
     background-color: #144E59;
-    box-shadow: 1px 1px 4px 2px #001520;
+    box-shadow: 0px 1px 5px 1px #001520;
+    background: -moz-linear-gradient(left, #e5e5be 0, #003973 100%);
+    background: -webkit-gradient(linear, left, right, color-sleft(0%, #e5e5be), color-sleft(100%, #003973));
+    background: -webkit-linear-gradient(left, #e5e5be 0, #003973 100%);
+    background: -o-linear-gradient(left, #e5e5be 0, #003973 100%);
+    background: -ms-linear-gradient(left, #e5e5be 0, #003973 100%);
+    background: linear-gradient(to left, #e5e5be 0, #003973 100%);
 }
 .header a{
     width: 40px;
