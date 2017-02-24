@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5实现上传预览预缩图片</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+        <style>
+            *{
+                box-sizing: border-box;
+                margin: 0;
+                padding:0;
+            }
+            body,html{
+                width: 100%;
+                height: 100%;
+            }
+            body{
+                font-family: 'Microsoft Yahei';
+                /*overflow: hidden;*/
+            }
+            #img_input {
+                margin: 10px 0;
+                display: none;
+
+            }
+            .label_area{
+                width: 300px;
+                height: 300px;
+                display: inline-block;
+                text-align: center;
+                line-height: 300px;
+                cursor: pointer;
+                /*background: url('prev-img.png') no-repeat;
+                background-size: cover;*/
+                border: 1px solid #ddd;
+                position: relative;
+            }
+            .label_area:before{
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background-color: #eee;
+                position: absolute;
+                top:50%;
+            }
+            .label_area:after{
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                transform: rotateZ(-90deg);
+                background-color: #eee;
+                position: absolute;
+                top: 50%;
+            }
+            .upload{
+                width: 100%;
+                height: 300px;
+                text-align: center;
+                margin: 0 auto;
+                position: relative;
+            }
+            .img_pre{
+                width: 80%;
+                margin: 0 auto;
+                text-align: center;
+                margin-top: 25px;
+            }
+            .img_pre img{
+                display: inline-block;
+            }
+            h2{
+                text-align: center;
+                margin: 15px 0;
+                font-size: 16px;
+            }
+            .clear_img{
+                width: 100px;
+                height: 35px;
+                margin: 15px auto;
+                color: #fafafa;
+                border: 1px solid #eee;
+                text-align: center;
+                line-height: 35px;
+                border-radius: 5px;
+                cursor: pointer;
+                background-color: #088D53;
+            }
+            @media screen and (max-width: 1080px) {
+                .label_area{
+                    width: 100px;
+                    height: 100px;
+                    line-height: 100px;
+                }
+                .upload{
+                    height: 120px;
+                }
+                .img_pre{
+                    width: 100%;
+                }
+                .img_pre img{
+                    width: 80%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h2>HTML5实现上传预览预缩图片</h2>
+        </div>
+        <div class="upload">
+            <label for="img_input" class="label_area">
+                <input type="file" value="image" id="img_input" />
+            </label>
+        </div>
+        <div class="clear_img">
+            重置图片
+        </div>
+        <div class="img_pre">
+            <img src="" id="img_area">
+        </div>
+        <script>
+            (function(window,undefined){
+                function getStart(obj){
+                    var input = document.querySelector(obj.fileId);
+                    var img_area = document.querySelector(obj.preId);
+                    if (typeof(FileReader) === 'undefined') {
+                        alert("您的浏览器由于过于老旧，不支持该方法，请更换浏览器后再打开");
+                        input.setAttribute('disabled', 'disabled');
+                    } else {
+                        input.addEventListener('change', readFile, false);
+                    }
+                    //change事件回调函数
+                    function readFile() {
+                        var file = this.files[0];
+                        if (!/image\/\w+/.test(file.type)) {
+                            alert("仅仅支持图片上传");
+                            return false;
+                        }
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = function(e) {
+                            var img = new Image(),
+                                base64,
+                                width = obj.wid, //image resize
+                                qual = obj.quality || 0.6, //image quality
+                                canvas = document.createElement("canvas"),
+                                drawer = canvas.getContext("2d");
+                            img.src = this.result; //原
+                            // console.log(this.result)
+                            img.onload = function() {
+                                canvas.width = width;
+                                canvas.height = width * (img.height / img.width);
+                                drawer.drawImage(img, 0, 0, canvas.width, canvas.height);
+                                base64 = canvas.toDataURL("image/jpeg", qual);
+                                // console.log(base64);
+                                img_area.src = base64;
+                            }
+                        }
+                    }
+                }
+                window.fileUp = function(obj){
+                    return new getStart(obj)
+                }
+            })(window)
+        </script>
+        <script>
+            window.onload = function(){
+                    //调用插件
+                    fileUp({
+                        fileId:'#img_input',//文件上传
+                        preId:'#img_area',//图片预览区域
+                        wid:'300',//定宽度  会同比缩放图片
+                        quality:'0.4'//压缩质量
+                    });
+
+                    function $$(el){
+                        return document.querySelector(el);
+                    }
+                    var clearBtn = $$('.clear_img'),
+                        setAttr = $$('#img_area');
+                    clearBtn.onclick = function(){
+                        setAttr.setAttribute('src','');
+                    }
+            }
+
+        </script>
+    </body>
+</html>

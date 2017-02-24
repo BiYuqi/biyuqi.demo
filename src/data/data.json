@@ -54,5 +54,11 @@
         "name":"正则简单测试工具",
         "tech":"主要技术：原生javascript",
         "main":"方便编码时进行简单测试"
+    },
+    {
+        "url":"src/html/preimg.html",
+        "img":"src/img/pre-img.jpg",
+        "name":"HTML5实现上传预览预缩图片",
+        "tech":"主要技术：原生javascript canvas"
     }
 ]
