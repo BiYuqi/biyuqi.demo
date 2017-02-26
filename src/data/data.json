@@ -61,5 +61,12 @@
         "name":"HTML5实现上传预览预缩图片",
         "tech":"主要技术：原生javascript canvas",
         "main":""
+    },
+    {
+        "url":"src/html/color-tochange.html",
+        "img":"src/img/color-to.jpg",
+        "name":"颜色转化器",
+        "tech":"主要技术：原生javascript",
+        "main":""
     }
 ]
