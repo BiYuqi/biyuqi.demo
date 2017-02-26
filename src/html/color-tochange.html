@@ -1208,7 +1208,7 @@
                     var showValue = $('.show-value2');
                     change.onclick = function(){
                         var v = $('.input-4').value,
-                            reg = /[\dabcdef]{6}/;
+                            reg = /[\dabcdef]{6}/i;
                             console.log(v);
                         if(v.length<=0){
                             return;
