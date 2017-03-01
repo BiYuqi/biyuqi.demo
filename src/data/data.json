@@ -68,5 +68,12 @@
         "name":"颜色转化器",
         "tech":"主要技术：原生javascript",
         "main":""
+    },
+    {
+        "url":"src/html/lazyload.html",
+        "img":"src/img/lazyload.jpg",
+        "name":"图片懒加载",
+        "tech":"主要技术：原生javascript",
+        "main":"实际项目中，可用性很强,提升用户体验"
     }
 ]
