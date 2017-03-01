@@ -80,10 +80,8 @@
                 sn = 0;//初始化图片位置
             for(var i=sn; i<len; i++){
                 if(imgNums[i].offsetTop < okSeeHeight + curScrollTop){
-                    if(imgNums[i].getAttribute('src') == this.obj.default){
-                        imgNums[i].src = imgNums[i].getAttribute('data-src');
-                        this.addClass(imgNums[i],'show');
-                    }
+                    imgNums[i].src = imgNums[i].getAttribute('data-src');
+                    this.addClass(imgNums[i],'show');
                     sn = i + 1;
                 }
             }
