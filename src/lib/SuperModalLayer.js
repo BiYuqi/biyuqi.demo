@@ -12,7 +12,6 @@
                 +           '<span class="super-btn super-btnSure">确定</span>'
                 +       '</div>'
                 +   '</div>';
-
         //动态插入css 本插件暂未未用到 暂不删除
         function setCss(cssCode){
             var style = document.createElement('style');
@@ -76,7 +75,7 @@
             $SM('.super-title').style.marginTop = 60+'px';
             $SM('.super-title').style.fontSize = obj.titleSize+'px';
         }
-
+        //
         $SM('.super-modal').addEventListener('click',function(){
             allHide();
             removeAll();
@@ -93,7 +92,6 @@
             removeAll();
             obj.tarFun && obj.tarFun();
         },false)
-
     }
     window.SuperModal = function(obj){
         return new SuperModal(obj)
