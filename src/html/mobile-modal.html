@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>移动端模态框提示性插件</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
+        <link rel="stylesheet" href="../css/superModalLayer.css">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .btn{
+                width: 200px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                background-color: green;
+                color: #fff;
+                margin: 20px auto;
+                cursor: pointer;
+            }
+            .tes1{
+                background-color: #c33;
+            }
+            .logo{
+                width: 200px;
+                height: 60px;
+                margin: 20px auto;
+                position: relative;
+            }
+            .logo a{
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .logo img{
+                width: 40px;
+            }
+            h2{
+                text-align: center;
+                margin: 20px 0;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>移动端模态框提示性插件(PC亦可用)</h2>
+        <div class="tes1 btn">
+            测试类型1
+        </div>
+        <div class="tes2 btn">
+            测试类型2
+        </div>
+        <div class="logo">
+            <a href="https://github.com/BiYuqi/super-modal" target="_blank">
+                <img src="../img/timg.png" alt="我的gihub地址">
+            </a>
+        </div>
+        <script src="../lib/superModalLayer.js"></script>
+        <script>
+            function $$(el){
+                return document.querySelector(el)
+            }
+            $$('.tes1').onclick = function(){
+                SuperModal({
+                    isFlag:true,//必填 true
+                    modalTips:"Hello 你好",//文案 js
+                    isShow:false,//
+                    titleSize:20,//提示文字大小 可选择不写
+                    tarFun:function(){//回调函数
+
+                    }
+                })
+            }
+            $$('.tes2').onclick = function(){
+                SuperModal({
+                    isFlag:true,//必填 true
+                    modalTips:"你写的文案有问题",//文案 js
+                    isShow:true,//指定取消 确定按钮 消失
+                    titleSize:20,//提示文字大小 可选择不写
+                    tarFun:function(){//回调函数
+
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>

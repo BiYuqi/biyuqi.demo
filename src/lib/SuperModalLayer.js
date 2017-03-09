@@ -69,9 +69,17 @@
              addClass($SM('.super-inner'),'slideAmi');
              allShow();
         }
+        //另一种情况 取消 确定按钮消失
+        if(obj.isShow){
+            hide($SM('.super-btnSure'));
+            hide($SM('.super-btnCancel'));
+            $SM('.super-title').style.marginTop = 60+'px';
+            $SM('.super-title').style.fontSize = obj.titleSize+'px';
+        }
+
         $SM('.super-modal').addEventListener('click',function(){
-            //allHide();
-            //removeAll();
+            allHide();
+            removeAll();
             //暂不实现点击背景  提示框消失功能  有需要的 可以打开注释，即可实现
         },false)
         //
