@@ -82,5 +82,12 @@
         "name":"移动端模态框小插件",
         "tech":"主要技术：原生javascript",
         "main":"用在项目中，可用性蛮不错,提升用户体验"
+    },
+    {
+        "url":"src/html/closespace.html",
+        "img":"src/img/color-to.jpg",
+        "name":"输入框禁止输入空格",
+        "tech":"主要技术：原生javascript",
+        "main":"用在项目中,提升用户体验"
     }
 ]
