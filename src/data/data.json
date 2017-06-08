@@ -89,5 +89,12 @@
         "name":"输入框禁止输入空格",
         "tech":"主要技术：原生javascript",
         "main":"用在项目中,提升用户体验"
+    },
+    {
+        "url":"src/html/form-opt.html",
+        "img":"src/img/regtool.jpg",
+        "name":"表单优化策略",
+        "tech":"主要技术：原生javascript，正则",
+        "main":"维护方便，代码耦合性低"
     }
 ]

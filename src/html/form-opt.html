@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .container{
+                width: 600px;
+                margin: 0 auto;
+            }
+            input{
+                margin: 20px 0;
+            }
+            .err-tips{
+                height: 40px;
+                line-height: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form class="forms">
+                <input type="text" name="userphone" placeholder="请输入手机号"> <br>
+                <input type="text" name="userpass" placeholder="请输入密码">
+            </form>
+            <button class="btn">点击测试</button>
+            <div class="err-tips"></div>
+        </div>
+        <script src="../lib/form-opt.js"></script>
+        <script src="../lib/rule-list.js"></script>
+        <script>
+            // 调用策略方法
+            var validator = _validator(_rules.rulelist);//导入规则表
+
+
+            // 开发代码
+            var forms = document.querySelector('.forms') // 获取表单集合
+            // 添加方法
+            validator.add(forms.userphone,[
+                {
+                    strategy:'isBlank',
+                    msg:'手机号号码不能为空'
+                },
+                {
+                    strategy:'isPhone',
+                    msg:'手机号输入有误'
+                }
+            ])
+            validator.add(forms.userpass,[
+                {
+                    strategy:'isBlank',
+                    msg:'密码不能为空'
+                },
+                {
+                    strategy:'passCheck',
+                    msg:'密码必须为数字字母的组合'
+                }
+            ])
+
+            // 校验
+            document.querySelector('.btn').onclick = function(){
+                // 调用 错误信息
+                var errMsg = validator.start(),
+                    errTips = document.querySelector('.err-tips');
+
+                // errMsg 包含了错误信息
+
+                if(errMsg){
+                    console.log(errMsg)
+                    errTips.innerHTML = errMsg;
+                }else{
+                    errTips.innerHTML = '登陆成功,即将为您跳转';
+                }
+            }
+        </script>
+    </body>
+</html>
