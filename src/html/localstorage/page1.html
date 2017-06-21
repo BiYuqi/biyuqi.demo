@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            select{
+                width: 100px;
+            }
+            .page1{
+                width: 600px;
+                margin: 0 auto;
+            }
+            .next-page{
+                width: 200px;
+                height: 40px;
+                line-height: 40px;
+                border: 1px solid green;
+                margin: 20px 0;
+                cursor: pointer;
+                display: block;
+                text-decoration: none;
+                text-align: center;
+                color: #999;
+            }
+            .render-range{
+                width: 100%;
+                height: 100px;
+                border: 1px solid #eee;
+                padding:10px;
+                -webkit-box-sizing: border-box;
+                   -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="page1">
+            <h3>测试localStorage(sessionStorage)同源不同页面下的变化监听</h3>
+            <p>需要在同一域名测试(本地测试需要起服务)</p>
+            <h4>数据展示</h4>
+            <div class="render-range">
+                旧值：<span class="old" style="color:#c33"></span> <br><br>
+                新值：<span class="new" style="color:green"></span>
+            </div>
+            <a href="page2.html" class="next-page" target="_blank">点击下一页进行输入</a>
+
+            <a style="margin:50px 0;display:block" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank">参考：Web Storage API</a>
+        </div>
+        <script>
+            function $(el){
+                return document.querySelector(el)
+            }
+            // 监听其他页面的变化 进行操作
+            window.addEventListener("storage", function (e) {
+                console.log(e)
+                if(e.key === 'opts'){
+                    $('.new').innerHTML = e.newValue
+                    $('.old').innerHTML = e.oldValue
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -96,5 +96,12 @@
         "name":"表单优化策略",
         "tech":"主要技术：原生javascript，正则",
         "main":"维护方便，代码耦合性低"
+    },
+    {
+        "url":"src/html/localstorage/page1.html",
+        "img":"src/img/regtool.jpg",
+        "name":"测试localStorage(sessionStorage)同源不同页面下的变化监听",
+        "tech":"主要技术：原生js",
+        "main":"开发小技巧"
     }
 ]
