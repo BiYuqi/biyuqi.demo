@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="page.css">
+        <style>
+            .render-show{
+                width: 1200px;
+                margin: 15px auto;
+                text-align: center;
+            }
+            ul{
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="render-show">
+            <ul class="render-tar">
+
+            </ul>
+        </div>
+        <div class="container">
+            <ul class="pages_wrapper clearfix">
+            </ul>
+        </div>
+        <script src="page.js"></script>
+        <script>
+            // 模拟数据
+            function loadData(){
+                let data = []
+                for(var i=0;i<10000;i++){
+                    data.push(i)
+                }
+                const getsplit = function(arr,size){
+                    const groups = Math.ceil(arr.length/size)
+                    const res = []
+                    for(let i=0;i<groups;i++){
+                        let start = i * size
+                        let end = start + size
+                        res.push(arr.slice(start,end))
+                    }
+                    return res
+                }
+                return getsplit(data,10)
+            }
+            var test = $pageView({
+                wrapView:document.querySelector('.pages_wrapper'), // 分页容器
+                curr:0, // 默认第一页
+                maxLen:10,// 分页最多显示的页数  只能是偶数
+                prevDisplay: true,//是否显示上一页按钮
+                nextDisplay: true,//是否显示下一页按钮
+                firstDisplay: true,//是否显示首页按钮
+                lastDisplay: true,//是否显示尾页按钮
+                showLinkTo: true, // 是否显示跳转按钮
+                total:loadData().length, // 总条数
+                renderData:function(index){ // 数据渲染 i 回调函数返回当前第几页(索引 从0开始，请自动加一)
+                    var data = loadData()[index],
+                        tpl = '';
+                    for(var i=0;i<data.length;i++){
+                        tpl += `<li>第${index+1}页----第${data[i]}条测试数据</li>`
+                    }
+                    document.querySelector('.render-tar').innerHTML = tpl
+                }
+            })
+        </script>
+    </body>
+</html>

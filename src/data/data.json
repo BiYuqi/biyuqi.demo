@@ -7,13 +7,6 @@
         "main":"阅读文章或者列表时，滑动到底部再加载数据条"
     },
     {
-        "url":"src/html/preViewBigImg.html",
-        "img":"http://oiukswkar.bkt.clouddn.com/preview.jpg",
-        "name":"点击查看(预览)大图(PC端)",
-        "tech":"主要技术：Jquery",
-        "main":"适用特定容器内图片"
-    },
-    {
         "url":"src/html/url.html",
         "img":"src/img/url.jpg",
         "name":"url之GET请求拼接参数",
@@ -103,5 +96,12 @@
         "name":"测试localStorage(sessionStorage)同源不同页面下的变化监听",
         "tech":"主要技术：原生js",
         "main":"开发小技巧"
+    },
+    {
+        "url":"src/html/page-view/index.html",
+        "img":"src/img/regtool.jpg",
+        "name":"简单分页小插件",
+        "tech":"主要技术：原生js",
+        "main":"某些场景适用"
     }
 ]
