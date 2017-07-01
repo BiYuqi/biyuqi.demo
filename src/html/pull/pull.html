@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html,body{
+                width: 100%;
+                height: 100%;
+            }
+            .container{
+                width: 100%;
+                height: 100%;
+            }
+            .clearfix:after{
+                display: block;
+                content: '';
+                overflow: hidden;
+                height: 0;
+                clear: both;
+            }
+            .view{
+                width: 1200px;
+                margin: 0 auto;
+                position: relative;
+            }
+            .box{
+                width: 200px;
+                float: left;
+                padding: 10px 0 0 10px;
+                margin-bottom:10px;
+
+            }
+            .box-cell{
+                padding: 10px;
+                border: 1px solid #eee;
+                border-radius: 5px;
+                box-shadow: 0px 0px 6px #eee;
+            }
+            .box img{
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="view clearfix">
+                <!-- <div class="box">
+                    <div class="box-cell">
+                        <img src="img/8.jpg" alt="">
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <script src="pull.js"></script>
+    </body>
+</html>

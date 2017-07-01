@@ -103,5 +103,12 @@
         "name":"简单分页小插件",
         "tech":"主要技术：原生js",
         "main":"某些场景适用"
+    },
+    {
+        "url":"src/html/pull/pull.html",
+        "img":"src/img/regtool.jpg",
+        "name":"js瀑布流",
+        "tech":"主要技术：原生js",
+        "main":""
     }
 ]
