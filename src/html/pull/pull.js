@@ -14,9 +14,6 @@ function renderData(){
     _$('.view').style.cssText = "width : " + imgWidth * size + "px;margin:0 auto;";
 
     for(var i=0;i<imgsAll.length;i++){
-        imgHeight[i] = imgs[i].offsetHeight
-        imgs[i].style.height = imgHeight[i]+'px'
-        
         if(i < size){
             resHeight[i] = imgsAll[i].offsetHeight
         }else{
@@ -28,7 +25,14 @@ function renderData(){
             imgsAll[i].style.left = imgsAll[minHeightIndex].offsetLeft+'px'
             resHeight[minHeightIndex] = resHeight[minHeightIndex]+imgsAll[i].offsetHeight
         }
-
+    }
+    var imgs = Array.from(_$$('.box-cell img'))
+    for(var i=0;i<imgs.length;i++){
+        (function(i){
+            imgs[i].onload = function(){
+                imgs[i].style.height = imgs[i].offsetHeight+'px'
+            }
+        })(i)
     }
 
 }
