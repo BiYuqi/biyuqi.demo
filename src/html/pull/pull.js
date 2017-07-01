@@ -26,14 +26,6 @@ function renderData(){
             resHeight[minHeightIndex] = resHeight[minHeightIndex]+imgsAll[i].offsetHeight
         }
     }
-    var imgs = Array.from(_$$('.box-cell img'))
-    for(var i=0;i<imgs.length;i++){
-        (function(i){
-            imgs[i].onload = function(){
-                imgs[i].style.height = imgs[i].offsetHeight+'px'
-            }
-        })(i)
-    }
 
 }
 // 渲染页面
@@ -117,3 +109,14 @@ window.addEventListener('scroll',throttle(100,200,function(){
         // },200)
     }
 }),false)
+
+window.onload = function(){
+    var imgs = Array.from(_$$('.box-cell img'))
+    for(var i=0;i<imgs.length;i++){
+        (function(i){
+            imgs[i].onload = function(){
+                imgs[i].style.height = imgs[i].offsetHeight+'px'
+            }
+        })(i)
+    }
+}
