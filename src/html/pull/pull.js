@@ -26,7 +26,6 @@ function renderData(){
             resHeight[minHeightIndex] = resHeight[minHeightIndex]+imgsAll[i].offsetHeight
         }
     }
-
 }
 // 渲染页面
 function renderHTML(){
@@ -110,13 +109,13 @@ window.addEventListener('scroll',throttle(100,200,function(){
     }
 }),false)
 
-window.onload = function(){
-    var imgs = Array.from(_$$('.box-cell img'))
-    for(var i=0;i<imgs.length;i++){
-        (function(i){
-            imgs[i].onload = function(){
-                imgs[i].style.height = imgs[i].offsetHeight+'px'
-            }
-        })(i)
-    }
-}
+// window.onload = function(){
+//     var imgs = Array.from(_$$('.box-cell img'))
+//     for(var i=0;i<imgs.length;i++){
+//         (function(i){
+//             imgs[i].onload = function(){
+//                 imgs[i].style.height = imgs[i].offsetHeight+'px'
+//             }
+//         })(i)
+//     }
+// }
