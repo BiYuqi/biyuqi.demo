@@ -25,6 +25,9 @@ function renderData(){
         }
     }
 }
+window.onload = function(){
+    renderHTML()
+}
 // 渲染页面
 function renderHTML(){
     var tpl = ''
@@ -42,7 +45,7 @@ function renderHTML(){
         renderData()
     },17)
 }
-renderHTML()
+
 
 function getIndex(arr,target){
     for(var i=0;i<arr.length;i++){
