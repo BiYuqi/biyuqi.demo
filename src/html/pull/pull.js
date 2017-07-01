@@ -6,12 +6,17 @@ function _$$(el){
 }
 function renderData(){
     var resHeight = []
+    var imgHeight = []
     var size = Math.floor(_$('.view').offsetWidth/_$$('.box')[0].offsetWidth)
     var imgWidth = _$$('.box')[0].offsetWidth
     var imgsAll = _$$('.box')
+    var imgs = _$$('.box-cell img')
     _$('.view').style.cssText = "width : " + imgWidth * size + "px;margin:0 auto;";
 
     for(var i=0;i<imgsAll.length;i++){
+        imgHeight[i] = imgs[i].offsetHeight
+        imgs[i].style.height = imgHeight[i]+'px'
+        
         if(i < size){
             resHeight[i] = imgsAll[i].offsetHeight
         }else{
@@ -23,10 +28,9 @@ function renderData(){
             imgsAll[i].style.left = imgsAll[minHeightIndex].offsetLeft+'px'
             resHeight[minHeightIndex] = resHeight[minHeightIndex]+imgsAll[i].offsetHeight
         }
+
     }
-}
-window.onload = function(){
-    renderHTML()
+
 }
 // 渲染页面
 function renderHTML(){
@@ -45,7 +49,7 @@ function renderHTML(){
         renderData()
     },17)
 }
-
+renderHTML()
 
 function getIndex(arr,target){
     for(var i=0;i<arr.length;i++){
