@@ -41,7 +41,6 @@ function renderHTML(){
     }
     _$('.view').innerHTML = tpl
     setTimeout(function(){
-        location.reload()
         renderData()
     },17)
 }
