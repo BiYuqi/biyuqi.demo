@@ -40,9 +40,11 @@ function renderHTML(){
                 </div>`
     }
     _$('.view').innerHTML = tpl
-    setTimeout(function(){
-        renderData()
-    },17)
+    window.onload = function(){
+        setTimeout(function(){
+            renderData()
+        },17)
+    }
 }
 renderHTML()
 
