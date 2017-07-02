@@ -28,7 +28,7 @@ function renderData(){
     }
 }
 // 渲染页面
-function renderHTML(fn){
+function renderHTML(){
     var tpl = ''
     for(i=0;i<30;i++){
         var index = Math.floor(Math.random()*6+2)
@@ -40,15 +40,12 @@ function renderHTML(fn){
                 </div>`
     }
     _$('.view').innerHTML = tpl
-    fn && fn()
+    setTimeout(function(){
+        location.reload()
+        renderData()
+    },17)
 }
-renderHTML(function(){
-    window.onload = function(){
-        setTimeout(function(){
-            renderData()
-        },17)
-    }
-})
+renderHTML()
 
 function getIndex(arr,target){
     for(var i=0;i<arr.length;i++){
