@@ -40,15 +40,6 @@ function renderHTML(){
                 </div>`
     }
     _$('.view').innerHTML = tpl
-    var imgs = Array.from(_$$('.box-cell img'))
-    setTimeout(function(){
-        for(var i=0;i<imgs.length;i++){
-            imgReady(imgs[i].src, function () {
-                imgs[i].style.height = this.height*168/this.width + 'px'
-                imgs[i].style.width = 168 +'px'
-        	});
-        }
-    },100)
     setTimeout(function(){
         renderData()
     },17)
@@ -117,16 +108,3 @@ window.addEventListener('scroll',throttle(100,200,function(){
         // },200)
     }
 }),false)
-
-function once(fn){
-    var isFlag = false;
-    return function(){
-        if(!isFlag){
-            isFlag = true;
-            fn();
-        }
-    }
-}
-window.onload = once(function(){
-    window.location.reload()
-})
