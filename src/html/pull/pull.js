@@ -49,7 +49,6 @@ function renderHTML(){
     },100)
     setTimeout(function(){
         renderData()
-        window.location.reload()
     },17)
 }
 renderHTML()
