@@ -46,9 +46,10 @@ function renderHTML(){
             imgs[i].style.height = imgs[i].offsetHeight + 'px'
             imgs[i].style.width = imgs[i].offsetWidth +'px'
         }
-    },17)
+    },100)
     setTimeout(function(){
         renderData()
+        window.location.reload()
     },17)
 }
 renderHTML()
