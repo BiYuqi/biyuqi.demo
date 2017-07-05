@@ -40,7 +40,19 @@ function renderHTML(){
                 </div>`
     }
     _$('.view').innerHTML = tpl
+    var imgs = Array.from(_$$('.box-cell img'))
+    setTimeout(function(){
+        for(var i=0;i<imgs.length;i++){
+            imgReady(imgs[i].src, function () {
+                imgs[i].style.height = this.height*168/this.width + 'px'
+                imgs[i].style.width = 168 +'px'
+        	});
 
+        }
+    },100)
+    setTimeout(function(){
+        renderData()
+    },17)
 }
 renderHTML()
 
@@ -108,14 +120,5 @@ window.addEventListener('scroll',throttle(100,200,function(){
 }),false)
 
 window.onload = function(){
-    var imgs = Array.from(_$$('.box-cell img'))
-    setTimeout(function(){
-        for(var i=0;i<imgs.length;i++){
-            imgs[i].style.height = imgs[i].offsetHeight + 'px'
-            imgs[i].style.width = imgs[i].offsetWidth +'px'
-        }
-    },100)
-    setTimeout(function(){
-        renderData()
-    },17)
+
 }
