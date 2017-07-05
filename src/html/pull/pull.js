@@ -47,7 +47,6 @@ function renderHTML(){
                 imgs[i].style.height = this.height*168/this.width + 'px'
                 imgs[i].style.width = 168 +'px'
         	});
-
         }
     },100)
     setTimeout(function(){
@@ -120,5 +119,9 @@ window.addEventListener('scroll',throttle(100,200,function(){
 }),false)
 
 window.onload = function(){
-
+    var flag = true;
+    if(flag){
+        window.location.reload()
+        flag = false
+    }
 }
