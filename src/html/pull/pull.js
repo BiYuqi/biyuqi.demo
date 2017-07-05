@@ -40,16 +40,7 @@ function renderHTML(){
                 </div>`
     }
     _$('.view').innerHTML = tpl
-    var imgs = Array.from(_$$('.box-cell img'))
-    setTimeout(function(){
-        for(var i=0;i<imgs.length;i++){
-            imgs[i].style.height = imgs[i].offsetHeight + 'px'
-            imgs[i].style.width = imgs[i].offsetWidth +'px'
-        }
-    },100)
-    setTimeout(function(){
-        renderData()
-    },17)
+
 }
 renderHTML()
 
@@ -116,13 +107,15 @@ window.addEventListener('scroll',throttle(100,200,function(){
     }
 }),false)
 
-// window.onload = function(){
-//     var imgs = Array.from(_$$('.box-cell img'))
-//     for(var i=0;i<imgs.length;i++){
-//         (function(i){
-//             imgs[i].onload = function(){
-//                 imgs[i].style.height = imgs[i].offsetHeight+'px'
-//             }
-//         })(i)
-//     }
-// }
+window.onload = function(){
+    var imgs = Array.from(_$$('.box-cell img'))
+    setTimeout(function(){
+        for(var i=0;i<imgs.length;i++){
+            imgs[i].style.height = imgs[i].offsetHeight + 'px'
+            imgs[i].style.width = imgs[i].offsetWidth +'px'
+        }
+    },100)
+    setTimeout(function(){
+        renderData()
+    },17)
+}
