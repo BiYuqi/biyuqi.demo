@@ -35,11 +35,18 @@ function renderHTML(){
 
         tpl += `<div class="box">
                 <div class="box-cell">
-                <img src="img/${index}.jpg" alt="">
+                <img src="img/${index}.jpg">
                 </div>
                 </div>`
     }
     _$('.view').innerHTML = tpl
+    var imgs = Array.from(_$$('.box-cell img'))
+    setTimeout(function(){
+        for(var i=0;i<imgs.length;i++){
+            imgs[i].style.height = imgs[i].offsetHeight + 'px'
+            imgs[i].style.width = imgs[i].offsetWidth +'px'
+        }
+    },17)
     setTimeout(function(){
         renderData()
     },17)
