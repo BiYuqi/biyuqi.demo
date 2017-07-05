@@ -118,10 +118,15 @@ window.addEventListener('scroll',throttle(100,200,function(){
     }
 }),false)
 
-window.onload = function(){
+function once(fn){
     var flag = true;
-    if(flag){
-        window.location.reload()
-        flag = false
+    return function(){
+        if(flag){
+            fn();
+            flag = false
+        }
     }
 }
+window.onload = once(function(){
+    window.location.reload()
+})
