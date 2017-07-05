@@ -119,11 +119,11 @@ window.addEventListener('scroll',throttle(100,200,function(){
 }),false)
 
 function once(fn){
-    var flag = true;
+    var isFlag = false;
     return function(){
-        if(flag){
+        if(!isFlag){
+            isFlag = true;
             fn();
-            flag = false
         }
     }
 }
