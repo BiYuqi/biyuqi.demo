@@ -110,5 +110,12 @@
         "name":"js瀑布流",
         "tech":"主要技术：原生js",
         "main":""
+    },
+    {
+        "url":"src/html/slideupdown.html",
+        "img":"src/img/regtool.jpg",
+        "name":"解决zepto.js中没有动画slideUp slideDown",
+        "tech":"主要技术：原生js，zepto",
+        "main":""
     }
 ]

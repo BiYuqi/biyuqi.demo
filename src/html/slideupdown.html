@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            .common-html-add{
+                margin:0 auto;
+                width: 800px;
+            }
+            .header{
+                text-align:center;
+                font-size:20px;
+                height: 50px;
+                line-height: 50px;
+            }
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            ul{
+                width: 400px;
+                list-style: none;
+                border: 1px solid #c33;
+                height: 0;
+                overflow: hidden;
+                transition: height .3s;
+            }
+            .clearfix:after{
+                content: '';
+                display: block;
+                clear: both;
+            }
+            li{
+                width: 100px;
+                height: 40px;
+                float: left;
+                background-color: #eee;
+                margin:0 4px 4px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="common-html-add transIn">
+            <h1 class="header" >
+                解决zepto.js中没有动画slideUp slideDown
+            </h1>
+            <h1 class="test" style="user-select:none;cursor:pointer">点击测试</h1>
+            <ul class="clearfix"></ul>
+            <div class="">我是外面部分</div>
+            <div class="">我是外面部分</div>
+            <div class="">我是外面部分</div>
+        </div>
+
+        <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+        <script>
+            //  测试数据动态加载
+            var str = ''
+            for(var i=0;i<19;i++){
+                str += `<li></li>`
+            }
+            $('ul').html(str)
+            // 动态加载css
+            function setCss(cssCode){
+                var style = document.createElement('style');
+                    style.type = 'text/css';
+                if(style.styleSheet){
+                    //IE
+                    style.styleSheet.cssText = cssCode;
+                }else{
+                    //others
+                    style.innerHTML = cssCode;
+                }
+                document.getElementsByTagName("head")[0].appendChild(style);
+            }
+            // 求值 计算高度
+            var len = Math.ceil($('li').length/3),
+                height = len*40+(len-1)*4  // 高度*len+margin*len
+
+            var tpl = `@keyframes fadeIn {
+                            from {
+                                height:0;
+                            }
+                            to {
+                                height:${height}px;
+                            }
+                        }
+                        ul.active{
+                            height:${height}px;
+                            animation: fadeIn .3s linear;
+                        }`
+            setCss(tpl)
+            // toggle
+            $('.test').click(function(){
+                $('ul').toggleClass('active')
+            })
+        </script>
+    </body>
+</html>
