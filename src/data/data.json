@@ -117,5 +117,12 @@
         "name":"解决zepto.js中没有动画slideUp slideDown",
         "tech":"主要技术：原生js，zepto",
         "main":""
+    },
+    {
+        "url":"src/html/focus-ani.html",
+        "img":"src/img/regtool.jpg",
+        "name":"input聚焦字符动画效果",
+        "tech":"主要技术：原生js",
+        "main":""
     }
 ]

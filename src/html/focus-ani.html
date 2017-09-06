@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>input聚焦字符动画效果</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body{
+                font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+                padding-top: 50px;
+                text-align: center;
+            }
+            h2{
+                margin-bottom: 30px;
+            }
+            .v_form__group{
+                width: 80%;
+                height: 50px;
+                margin: 0 auto;
+            }
+            .v_form__group .v_form__item{
+                width: 100%;
+                height: 50px;
+                position: relative;
+                margin-bottom: 10px;
+                border-bottom: 1px solid rgb(29, 185, 244);
+            }
+            .v_form__group .v_form__item input{
+                width: 90%;
+                height: 40px;
+                border: none;
+                outline: none;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+            .v_form__group .v_form__item .v_text{
+                position: absolute;
+                top: 20px;
+                left: 0;
+                font-size: 14px;
+                color: #9e9e9e;
+                transition: all .2s;
+            }
+            .v_form__group .v_form__item .v_text.active{
+                position: absolute;
+                top: -5px;
+                left: 0;
+                font-size: 16px;
+                color: rgb(29, 185, 244);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 一套组件 -->
+        <div class="v_form__group">
+            <h2>聚焦字符动画效果</h2>
+            <div class="v_form__item">
+                <input type="text" id="target">
+                <p class="v_text">姓名</p>
+            </div>
+            <div class="v_form__item">
+                <input type="text" id="target2">
+                <p class="v_text">地址</p>
+            </div>
+        </div>
+        <script>
+            (function(window,undefined){
+                function __$(el){
+                    return document.querySelector(el)
+                }
+                function _addClass(el,name){
+                    var className = el.className
+                    var reg = new RegExp(''+name+'','g')
+                    if(!reg.test(className)){
+                        el.className += ' '+name
+                    }
+                }
+                function _removeClass(el,name){
+                    var className = el.className
+                    var reg = new RegExp(''+name+'','g')
+                    if(reg.test(className)){
+                        el.className = className.replace(reg,'').replace(/\s?$/g,'')
+                    }
+                }
+
+                function AutoInputTxt(target){
+                    for(var i=0;i<target.length;i++){
+                        __$(target[i]).addEventListener('focus',function(){
+                            _addClass(this.nextElementSibling,'active')
+                        })
+                        __$(target[i]).addEventListener('blur',function(){
+                            if(this.value.length <= 0){
+                                _removeClass(this.nextElementSibling,'active')
+                            }
+                        })
+                    }
+                }
+                window._inputAni = function(obj){
+                    return new AutoInputTxt(obj)
+                }
+            })(window)
+        </script>
+        <script>
+            // 只需调用下即可 input class 或者 id
+            _inputAni(['#target','#target2'])
+        </script>
+    </body>
+</html>
