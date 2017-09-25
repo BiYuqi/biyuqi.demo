@@ -15,7 +15,6 @@ body{
 }
 .container{
     width: 100%;
-    background: url('../img/27.jpg') no-repeat;
     background-size: cover;
 }
 .header{
