@@ -124,5 +124,12 @@
         "name":"input聚焦字符动画效果",
         "tech":"主要技术：原生js",
         "main":""
+    },
+    {
+        "url":"src/html/danmu.html",
+        "img":"src/img/regtool.jpg",
+        "name":"写个弹幕效果",
+        "tech":"主要技术：原生js",
+        "main":""
     }
 ]

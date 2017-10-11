@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            html,body{
+                height: 100%;
+            }
+            .box{
+                width: 800px;
+                height: 600px;
+                border: 1px solid #aaa;
+                background-color: #000;
+                opacity: .7;
+                margin: 0 auto;
+                position: relative;
+                overflow: hidden;
+            }
+            .bott{
+                height: 40px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background-color: gray;
+                width: 100%;
+            }
+            .bott input{
+                width: 400px;
+                height: 28px;
+                outline: none;
+                border: 1px solid #eee;
+                background-color: #fff;
+                margin-top: 5px;
+                margin-left: 10px;
+                vertical-align: middle;
+            }
+            .bott button{
+                width: 60px;
+                height: 30px;
+                outline: none;
+                border: 1px solid rgb(24, 185, 236);
+                background-color: rgb(24, 185, 236);
+                margin-top: 5px;
+                margin-left: 10px;
+                color: #fff;
+                vertical-align: middle;
+            }
+            .bb{
+                position: absolute;
+                z-index: 9999;
+                right: -100px;
+                white-space: nowrap;
+            }
+            @media screen and (max-width:480px) {
+                .box{
+                    width: 100%;
+                    height: 100%;
+                }
+                .bott input{
+                    width: 80%;
+                }
+                .bott button{
+                    width: 50px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="bott">
+                <input type="text" id="input">
+                <button id="btn">发送</button>
+            </div>
+        </div>
+        <script>
+            class Bull {
+                constructor(options) {
+                    this.options = options
+                    this.box = document.querySelector(options.box || '.box')
+                    this.sendBtn = document.querySelector(options.btn || '#btn')
+                    this.userData = document.querySelector(options.input || '#input')
+                }
+
+                init() {
+                    this.bindEvent()
+                    const top = this.getRandomParam()
+                    console.log(top)
+                }
+
+                getRandomParam() {
+                    const { random , floor} = Math
+                    const r = floor(random()*256)
+                    const g = floor(random()*256)
+                    const b = floor(random()*256)
+                    return {
+                        top: random()*520+1,
+                        color: `rgb(${r}, ${g}, ${b})`
+                    }
+                }
+                drawBull(param) {
+                    const { top, color } = this.getRandomParam()
+                    const span = document.createElement('P')
+                    const len = param.length
+                    span.innerHTML = param
+                    span.className = 'bb'
+                    span.style.top = top + 'px'
+                    span.style.right = - (20 + (len * 16)) + 'px'
+                    span.style.color = color
+                    this.box.appendChild(span)
+                    this.bullanimate(span)
+                }
+
+                bullanimate(target) {
+                    const { options } = this
+                    const that = this
+                    let num = - target.offsetWidth,
+                        speed = options.speed || 0.6;
+                    const autoRun = function(){
+                        num += speed
+                        target.style.right = num + 'px'
+                        if(num > that.box.offsetWidth + target.offsetWidth){
+                            target.parentNode.removeChild(target)
+                            clearInterval(timer)
+                        }
+                    }
+                    const timer = setInterval(autoRun,13)
+
+                }
+
+                bindEvent() {
+                    this.sendBtn.onclick = ()=> {
+                        const data = this.userData.value
+                        if(!data){
+                            return
+                        }
+                        setTimeout(()=>{
+                            this.drawBull(data)
+                        },0)
+                    }
+                }
+
+
+            }
+
+            const bullReal = new Bull({
+                box: '.box',
+                btn: '#btn',
+                input: '#input',
+                speed: 0.5
+            })
+            bullReal.init()
+
+        </script>
+    </body>
+</html>
