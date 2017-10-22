@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+}
+.letter-wrapper{
+    position: fixed;
+    top: 40px;
+    right: 0;
+    width: 30px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 99;
+}
+.wrapper{
+    position: fixed;
+    top: 40px;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 999;
+}
+.wrapper.active{
+    background-color: rgb(236, 236, 236);
+}
+.current-char{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    font-size: 32px;
+    color: #999;
+    display: none;
+}
+.wrapper .item{
+    text-align: center;
+    color: #333;
+    font-size: 12px;
+}
+.concat{
+    margin-top: 40px;
+}
+.concat-list-item ul{
+    padding-left: 10px;
+}
+.concat-list-item p{
+    background-color: rgb(213, 213, 213);
+    color: #333;
+    padding-left: 10px;
+}
+.list-item-letter{
+    height: 50px;
+    line-height: 50px;
+    padding: 10px 0 10px 0px;
+    border-bottom: 1px solid #eee;
+}
+.list-item-letter img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.list-item-letter span{
+    vertical-align: super;
+}
+.header{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    background-color: rgb(12, 93, 144);
+}

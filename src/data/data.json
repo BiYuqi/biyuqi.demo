@@ -131,5 +131,12 @@
         "name":"写个弹幕效果",
         "tech":"主要技术：原生js",
         "main":""
+    },
+    {
+        "url":"src/html/index-slidebar/index-slidebar.html",
+        "img":"src/img/indexslide.png",
+        "name":"写个字母索引导航条（请在移动端模式下浏览）",
+        "tech":"主要技术：ES6",
+        "main":""
     }
 ]
